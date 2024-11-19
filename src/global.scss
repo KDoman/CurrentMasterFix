@@ -1,0 +1,17 @@
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+  --main-color: #83a9ff;
+}
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+* {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+input:focus {
+  outline: none;
+}

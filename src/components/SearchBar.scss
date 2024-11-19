@@ -1,0 +1,87 @@
+@import "../responsive.scss";
+.search_bar {
+  .type {
+    button {
+      padding: 1rem 0.5rem;
+      border: 1px solid black;
+      border-bottom: none;
+      cursor: pointer;
+      text-transform: capitalize;
+      border-color: #d6d6d6;
+      &.active {
+        background-color: black;
+        color: white;
+        border-color: black;
+      }
+      &:first-child {
+        border-top-left-radius: 0.3rem;
+        border-right: none;
+      }
+      &:last-child {
+        border-top-right-radius: 0.3rem;
+        border-left: none;
+      }
+    }
+  }
+  form {
+    border: 1px solid #d6d6d6;
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+    overflow: hidden;
+
+    @include lg {
+      flex-direction: column;
+      overflow: initial;
+      border: none;
+    }
+    .search_button_div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border: 1px solid #d6d6d6;
+      border-radius: 0.2rem;
+      overflow: hidden;
+
+      @include lg {
+        margin-top: 0.2rem;
+      }
+
+      .search_button {
+        width: 100%;
+        cursor: pointer;
+        background-color: var(--main-color);
+        transition: scale 0.2s ease;
+        border: none;
+        padding: 0.5rem 1rem;
+
+        &:hover {
+          scale: 1.25;
+        }
+        img {
+          max-width: 2rem;
+        }
+      }
+    }
+
+    input {
+      border: none;
+      padding: 0 10px;
+      width: 200px;
+      border-radius: 0.2rem;
+
+      &:first-child {
+        margin-top: 0;
+        border-top-left-radius: 0;
+      }
+
+      @include lg {
+        min-width: 100%;
+        padding: 1rem;
+        margin: 0.2rem 0;
+        border: #d6d6d6 1px solid;
+      }
+    }
+  }
+}

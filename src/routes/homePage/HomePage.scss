@@ -1,0 +1,94 @@
+@import "../../responsive.scss";
+.home_page {
+  display: flex;
+  .text_container {
+    flex: 3;
+
+    .heading_wrapper {
+      margin-top: 2rem;
+      margin-right: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      height: 100%;
+      justify-content: center;
+      @include md {
+        gap: 3rem;
+      }
+
+      @include sm {
+        gap: 2rem;
+      }
+
+      p,
+      h1,
+      span {
+        padding-right: 1rem;
+      }
+
+      h1 {
+        font-size: 5.5rem;
+      }
+
+      h2 {
+        display: block;
+        font-size: 3rem;
+      }
+      .boxes_of_numbers {
+        display: flex;
+        justify-content: space-between;
+
+        @include sm {
+          flex-direction: column;
+          justify-content: flex-start;
+        }
+
+        .box {
+          @include sm {
+            margin-top: 2rem;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid #d3d3d3;
+
+            &:last-child {
+              margin-bottom: 2rem;
+            }
+          }
+          h3 {
+            @include sm {
+              font-size: 1rem;
+            }
+          }
+          h2 {
+            @include sm {
+              font-size: 2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  .img_container {
+    flex: 2;
+    background-color: #f3f3f3;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    min-height: 100vh;
+
+    @include md {
+      display: none;
+    }
+
+    img {
+      width: 100%;
+      position: absolute;
+      right: 0;
+      top: 25%;
+
+      @include md {
+        display: none;
+      }
+    }
+  }
+}
