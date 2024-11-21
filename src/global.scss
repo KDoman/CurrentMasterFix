@@ -12,6 +12,10 @@ html {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
-input:focus {
-  outline: none;
+input:focus,
+input:active,
+select:focus,
+select:active {
+  outline-color: var(--main-color);
+  outline-offset: 1px;
 }

@@ -1,0 +1,16 @@
+.list_page {
+  display: flex;
+  height: 100%;
+
+  .list_container {
+    flex: 3;
+
+    .wrapper {
+      padding-right: 4rem;
+    }
+  }
+  .map_container {
+    flex: 2;
+    background-color: #f3f3f3;
+  }
+}
