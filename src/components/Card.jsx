@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PERSON_ICON from "../assets/Person.svg";
 import HOME_ICON from "../assets/Home.svg";
 import STAR_ICON from "../assets/Star.svg";
+import { Label } from "./Label";
 
 export const Card = ({ item }) => {
   return (
@@ -11,34 +12,42 @@ export const Card = ({ item }) => {
         <img src={item.img} />
       </div>
       <div className="text_container">
-        <div className="text_name_container">
-          <img
-            className="svg_icon"
-            src={PERSON_ICON}
-            alt="Obrazek w formacie SVG reprezentujące osobę"
-          />
-          <p>{item.name}</p>
-          <p>{item.surname}</p>
-          <div className="text_city_container">
+        <div>
+          <div className="text_name_container">
             <img
               className="svg_icon"
-              src={HOME_ICON}
-              alt="Obrazek w formacie SVG przedstawiający domek"
+              src={PERSON_ICON}
+              alt="Obrazek w formacie SVG reprezentujące osobę"
             />
-            <span className="text_city">{item.city}</span>
+            <p>{item.name}</p>
+            <p>{item.surname}</p>
+            <div className="text_city_container">
+              <img
+                className="svg_icon"
+                src={HOME_ICON}
+                alt="Obrazek w formacie SVG przedstawiający domek"
+              />
+              <span className="text_city">{item.city}</span>
+            </div>
+          </div>
+          <div className="text_rating">
+            <img
+              className="svg_icon"
+              src={STAR_ICON}
+              alt="Obrazek w formacie SVG przedstawiający gwiazdę"
+            />
+            <p className="text_rating_p">
+              <span className="reviews_counter">({item.rating.length})</span>
+              {(
+                item.rating.reduce((acc, val) => acc + val) / item.rating.length
+              ).toFixed(2)}
+            </p>
           </div>
         </div>
-        <div className="text_rating">
-          <img
-            className="svg_icon"
-            src={STAR_ICON}
-            alt="Obrazek w formacie SVG przedstawiający gwiazdę"
-          />
-          <p className="text_rating_p">
-            {(
-              item.rating.reduce((acc, val) => acc + val) / item.rating.length
-            ).toFixed(2)}
-          </p>
+        <div className="text_labels">
+          {item.labels.map((label) => (
+            <Label key={label}>{label}</Label>
+          ))}
         </div>
       </div>
     </Link>
