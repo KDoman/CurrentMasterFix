@@ -1,11 +1,13 @@
 .list_page {
-  height: auto;
+  height: 100%;
 }
 
 .list_wrapper {
+  height: 100%;
   margin-right: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 2rem;
+  overflow-y: scroll;
 }

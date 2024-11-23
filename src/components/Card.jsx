@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import PERSON_ICON from "../assets/Person.svg";
 import HOME_ICON from "../assets/Home.svg";
 import STAR_ICON from "../assets/Star.svg";
+import CHAT_ICON from "../assets/chat.svg";
+import SAVE_ICON from "../assets/save.svg";
 import { Label } from "./Label";
 
 export const Card = ({ item }) => {
@@ -44,10 +46,22 @@ export const Card = ({ item }) => {
             </p>
           </div>
         </div>
-        <div className="text_labels">
-          {item.labels.map((label) => (
-            <Label key={label}>{label}</Label>
-          ))}
+        <div className="text_down_card_info">
+          <div className="text_contact_icons">
+            <img
+              src={CHAT_ICON}
+              alt="Obrazek w formacie SVG przedstawiający wiadomości"
+            />
+            <img
+              src={SAVE_ICON}
+              alt="Obrazek w formacie SVG przedstawiający możliwość zapisania fachowca do ulubionych"
+            />
+          </div>
+          <div className="text_labels">
+            {item.labels.map((label) => (
+              <Label key={label}>{label}</Label>
+            ))}
+          </div>
         </div>
       </div>
     </Link>
