@@ -13,6 +13,7 @@ export const listData = [
       "Wysoka jakość usług",
       "Polecany przez klientów",
     ],
+    professions: ["Elektryk", "Hydraulik"],
   },
   {
     id: 2,
@@ -24,6 +25,7 @@ export const listData = [
     longitude: 21.0035, // Białołęka
     rating: [3.5, 4.0, 4.5],
     labels: ["Nowy użytkownik", "Dba o szczegóły", "Zaufany fachowiec"],
+    professions: ["Malarz", "Złota rączka"],
   },
   {
     id: 3,
@@ -39,6 +41,7 @@ export const listData = [
       "Szybka realizacja",
       "Polecany przez klientów",
     ],
+    professions: ["Elektryk", "Mechanik", "Stolarz"],
   },
   {
     id: 4,
@@ -50,6 +53,7 @@ export const listData = [
     longitude: 21.0478, // Bródno
     rating: [4.0, 3.5, 4.5],
     labels: ["Zaufany fachowiec", "Doświadczony fachowiec", "Dba o szczegóły"],
+    professions: ["Ogrodnik", "Złota rączka"],
   },
   {
     id: 5,
@@ -65,6 +69,7 @@ export const listData = [
       "Polecany przez klientów",
       "Szybka realizacja",
     ],
+    professions: ["Hydraulik", "Malarz", "Stolarz"],
   },
   {
     id: 6,
@@ -76,6 +81,7 @@ export const listData = [
     longitude: 21.0486, // Praga Północ
     rating: [3.0, 3.5, 4.0],
     labels: ["Nowy użytkownik", "Dba o szczegóły", "Zaufany fachowiec"],
+    professions: ["Mechanik", "Ogrodnik"],
   },
   {
     id: 7,
@@ -91,6 +97,7 @@ export const listData = [
       "Ekspert w swojej dziedzinie",
       "Wysoka jakość usług",
     ],
+    professions: ["Elektryk", "Malarz", "Mechanik"],
   },
   {
     id: 8,
@@ -102,6 +109,7 @@ export const listData = [
     longitude: 21.0256, // Wola
     rating: [4.0, 3.5, 3.0],
     labels: ["Nowy użytkownik", "Szybka realizacja", "Polecany przez klientów"],
+    professions: ["Złota rączka", "Ogrodnik"],
   },
   {
     id: 9,
@@ -117,6 +125,7 @@ export const listData = [
       "Doświadczony fachowiec",
       "Zaufany fachowiec",
     ],
+    professions: ["Stolarz", "Hydraulik", "Elektryk"],
   },
   {
     id: 10,
@@ -128,5 +137,6 @@ export const listData = [
     longitude: 21.0319, // Mokotów
     rating: [4.0, 3.5, 5.0],
     labels: ["Dba o szczegóły", "Wysoka jakość usług", "Nowy użytkownik"],
+    professions: ["Mechanik", "Malarz"],
   },
 ];

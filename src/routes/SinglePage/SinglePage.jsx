@@ -1,5 +1,5 @@
 import "./SinglePage.scss";
 
 export const SinglePage = () => {
-  return <div>SinglePage</div>;
+  return <div className="single_page_container">SinglePage</div>;
 };

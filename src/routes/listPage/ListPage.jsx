@@ -17,7 +17,7 @@ export const ListPage = () => {
         </div>
       </div>
       <div className="map_container">
-        <Map />
+        <Map items={data} />
       </div>
     </div>
   );

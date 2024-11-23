@@ -58,8 +58,8 @@ export const Card = ({ item }) => {
             />
           </div>
           <div className="text_labels">
-            {item.labels.map((label) => (
-              <Label key={label}>{label}</Label>
+            {item.professions.map((proffesion) => (
+              <Label key={proffesion}>{proffesion}</Label>
             ))}
           </div>
         </div>
