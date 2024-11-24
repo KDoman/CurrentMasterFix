@@ -1,7 +1,33 @@
 .popup_container {
-  display: flex;
+  display: grid;
   gap: 0.5rem;
+  min-width: fit-content;
   img {
-    max-width: 5rem;
+    max-width: 6rem;
+    max-height: 6rem;
+    margin: auto;
+  }
+  .popup_text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    .popup_button {
+      width: 100%;
+      cursor: pointer;
+      background-color: var(--main-color);
+      transition: scale 0.2s ease;
+      border: none;
+      padding: 0.5rem 1rem;
+      min-width: 100%;
+
+      &:hover {
+        scale: 1.05;
+      }
+    }
+  }
+  .proffesions_div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
   }
 }

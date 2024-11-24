@@ -9,7 +9,7 @@ import { Label } from "./Label";
 
 export const Card = ({ item }) => {
   return (
-    <Link to={`/${item.id}`} className="card_container">
+    <Link to={`/list/${item.id}`} className="card_container">
       <div className="image_container">
         <img src={item.img} />
       </div>

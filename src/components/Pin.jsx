@@ -1,6 +1,7 @@
 import { Marker, Popup } from "react-leaflet";
 import "./Pin.scss";
 import { Link } from "react-router-dom";
+import { Label } from "./Label";
 
 export const Pin = ({ item }) => {
   return (
@@ -12,8 +13,14 @@ export const Pin = ({ item }) => {
             alt={`Zdjęcie użytkownika ${item.name} ${item.surname}`}
           />
           <div className="popup_text">
-            <Link to={`/${item.id}`}>
-              {item.name} {item.surname}
+            {item.name} {item.surname}
+            <div className="proffesions_div">
+              {item.professions.map((prof) => (
+                <Label key={prof}>{prof}</Label>
+              ))}
+            </div>
+            <Link to={`/list/${item.id}`}>
+              <button className="popup_button">Sprawdź</button>
             </Link>
           </div>
         </div>

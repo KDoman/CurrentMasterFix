@@ -18,14 +18,16 @@ function App() {
         {
           path: "/list",
           element: <ListPage />,
+          children: [
+            {
+              path: "/list/:id",
+              element: <SinglePage />,
+            },
+          ],
         },
         {
           path: "/login",
           element: <LoginPage />,
-        },
-        {
-          path: "/:id",
-          element: <SinglePage />,
         },
       ],
     },

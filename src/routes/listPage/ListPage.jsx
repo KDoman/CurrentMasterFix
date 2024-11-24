@@ -12,7 +12,7 @@ export const ListPage = () => {
         <div className="list_wrapper">
           <Filter />
           {data.map((item) => (
-            <Card key={item} item={item} />
+            <Card key={item.id} item={item} />
           ))}
         </div>
       </div>
