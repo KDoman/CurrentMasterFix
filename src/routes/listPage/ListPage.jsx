@@ -3,6 +3,7 @@ import { Card } from "../../components/Card";
 import { listData } from "../../data/data";
 import "./ListPage.scss";
 import { Map } from "../../components/Map";
+import { Outlet } from "react-router-dom";
 
 export const ListPage = () => {
   const data = listData;
@@ -10,6 +11,7 @@ export const ListPage = () => {
     <div className="list_page">
       <div className="list_container">
         <div className="list_wrapper">
+          <Outlet />
           <Filter />
           {data.map((item) => (
             <Card key={item.id} item={item} />
