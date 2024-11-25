@@ -41,7 +41,9 @@ export const Card = ({ item }) => {
             <p className="text_rating_p">
               <span className="reviews_counter">({item.rating.length})</span>
               {(
-                item.rating.reduce((acc, val) => acc + val) / item.rating.length
+                item.rating
+                  .map((rate) => rate.mark)
+                  .reduce((acc, val) => acc + val) / item.rating.length
               ).toFixed(2)}
             </p>
           </div>
