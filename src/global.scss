@@ -4,12 +4,13 @@ html {
   --main-color: #83a9ff;
 }
 ::-webkit-scrollbar {
-  width: 0;
+  width: initial;
   background: transparent;
 }
 
 * {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
 }
 
 input:focus,

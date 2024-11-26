@@ -1,30 +1,38 @@
-.list_page {
-  height: 100%;
-}
+@import "../../responsive.scss";
 
 .list_wrapper {
   height: 100%;
-  margin-right: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 0.5rem;
   overflow-y: scroll;
+  padding-right: 1rem;
+  @include md {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
 }
 
 .list_page {
   display: flex;
   height: 100%;
+  @include md {
+    display: block;
+  }
 
   .list_container {
     flex: 3;
-
-    .wrapper {
-      padding-right: 4rem;
-    }
   }
   .map_container {
     flex: 2;
     background-color: #f3f3f3;
+
+    @include md {
+      height: 300px;
+      width: 90%;
+      margin: 1rem auto;
+    }
   }
 }
