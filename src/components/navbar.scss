@@ -79,18 +79,19 @@ nav {
   .menu {
     position: absolute;
     top: 0;
-    right: -50%;
+    right: 0;
     background-color: black;
-    height: 100vh;
+    height: 100%;
     width: 50%;
+    display: none;
     transition: all 1s ease;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: 1;
 
     &.active {
-      right: 0;
+      display: flex;
     }
     a {
       color: white;

@@ -169,7 +169,7 @@ export const listData = [
     surname: "Wójcik",
     img: "https://randomuser.me/api/portraits/men/10.jpg",
     city: "Warszawa",
-    latitude: 52.244,
+    latitude: 52.234,
     longitude: 21.0319, // Mokotów
     rating: [
       { mark: 4.0, message: "Dobry fachowiec!" },

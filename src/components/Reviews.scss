@@ -1,26 +1,22 @@
 .reviews_container {
-  background-color: var(--main-color);
-  padding: 0.5rem;
-  border-radius: 0.4rem;
+  padding: 1rem;
   margin-top: 1rem;
-  overflow-y: scroll;
-  max-height: 300px;
+  border: 1px solid #d3d3d3;
 }
 .review {
+  width: 100%;
   margin: 1rem 0;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   background-color: #e3e3e3;
   padding: 0.3rem;
-  border-radius: 0.5rem;
   position: relative;
   .review_counter {
-    padding-right: 1rem;
     font-size: 0.8rem;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 10px;
+    right: 10px;
   }
   .review_star {
     max-width: 1rem;
