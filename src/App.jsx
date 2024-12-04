@@ -7,7 +7,8 @@ import { ListPage } from "./routes/listPage/ListPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { LoginPage } from "./routes/LoginPage/LoginPage";
 import { SinglePage } from "./routes/SinglePage/SinglePage";
-import { ProffesionalPage } from "./routes/ProffesionalPage/ProffesionalPage";
+
+import { Messages } from "./routes/Messages/Messages";
 
 function App() {
   const router = createBrowserRouter([
@@ -31,8 +32,8 @@ function App() {
           element: <LoginPage />,
         },
         {
-          path: "/proffesional/:id",
-          element: <ProffesionalPage />,
+          path: "/messages",
+          element: <Messages />,
         },
       ],
     },
