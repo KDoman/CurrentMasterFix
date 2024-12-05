@@ -6,6 +6,7 @@ import STAR_ICON from "../assets/Star.svg";
 import CHAT_ICON from "../assets/chat.svg";
 import SAVE_ICON from "../assets/save.svg";
 import { Label } from "./Label";
+import { GetReviewAvg } from "../helpers/GetReviewAvg";
 
 export const Card = ({ item }) => {
   return (
@@ -40,11 +41,7 @@ export const Card = ({ item }) => {
             />
             <p className="text_rating_p">
               <span className="reviews_counter">({item.rating.length})</span>
-              {(
-                item.rating
-                  .map((rate) => rate.mark)
-                  .reduce((acc, val) => acc + val) / item.rating.length
-              ).toFixed(2)}
+              {GetReviewAvg(item.rating)}
             </p>
           </div>
         </div>

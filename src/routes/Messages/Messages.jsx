@@ -6,7 +6,9 @@ import HOME_LOGO from "../../assets/Home.svg";
 import BACK_ICON from "../../assets/Back.svg";
 import STAR_ICON from "../../assets/Star.svg";
 import { Link } from "react-router-dom";
-
+import { GetReviewAvg } from "../../helpers/GetReviewAvg";
+import SEND_ICON from "../../assets/Send.svg";
+import { ReviewComment } from "../../components/ReviewComment";
 export const Messages = () => {
   return (
     <>
@@ -37,7 +39,16 @@ export const Messages = () => {
           </p>
         </div>
         <div className="middle_message_chat"></div>
-        <div className="middle_text_input"></div>
+        <div className="middle_text_input">
+          <input
+            type="text"
+            name="messege_input_text"
+            id="messege_input_text"
+          />
+          <div className="send_icon">
+            <img src={SEND_ICON} alt="" />
+          </div>
+        </div>
         <div className="right_profile_info">
           <img src={listData[0].img} />
           <p>
@@ -49,13 +60,7 @@ export const Messages = () => {
           </div>
           <div className="right_profile_info_reviews">
             <img src={STAR_ICON} alt="" />
-            <p>
-              {(
-                listData[0].rating
-                  .map((rate) => rate.mark)
-                  .reduce((acc, val) => acc + val) / listData[0].rating.length
-              ).toFixed(2)}
-            </p>
+            <p>{GetReviewAvg(listData[0].rating)}</p>
           </div>
         </div>
         <div className="right_more_profile_info">
@@ -67,7 +72,13 @@ export const Messages = () => {
             ))}
           </div>
           <p>Ostatnie komentarze</p>
-          <div className="right_more_prfile_info_review_comment"></div>
+          <div className="right_more_prfile_info_review_comment">
+            {listData[0].rating.map((rating) => (
+              <ReviewComment key={listData[0].id}>
+                {rating.message}
+              </ReviewComment>
+            ))}
+          </div>
         </div>
       </div>
     </>

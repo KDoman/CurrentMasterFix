@@ -6,6 +6,7 @@ import HOME_LOGO from "../assets/Home.svg";
 import { Reviews } from "./Reviews";
 import STAR_LOGO from "../assets/Star.svg";
 import { EndOfWord } from "../helpers/EndOfWord";
+import { GetReviewAvg } from "../helpers/GetReviewAvg";
 
 export const PersonInfoModal = ({ obj }) => {
   return (
@@ -29,11 +30,7 @@ export const PersonInfoModal = ({ obj }) => {
           <div className="additional_info">
             <div className="flex person_info_modal_marks">
               <img src={STAR_LOGO} alt="" />
-              {(
-                obj.rating
-                  .map((rate) => rate.mark)
-                  .reduce((acc, val) => acc + val) / obj.rating.length
-              ).toFixed(2)}
+              {GetReviewAvg(obj.rating)}
               <div className="flex person_info_modal_counter_marks">{`${
                 obj.rating.length
               } ${EndOfWord(obj.rating.length)} `}</div>
