@@ -4,6 +4,7 @@ import { listData } from "../../data/data";
 import { Label } from "../../components/Label";
 import HOME_LOGO from "../../assets/Home.svg";
 import BACK_ICON from "../../assets/Back.svg";
+import STAR_ICON from "../../assets/Star.svg";
 import { Link } from "react-router-dom";
 
 export const Messages = () => {
@@ -46,6 +47,16 @@ export const Messages = () => {
             <img src={HOME_LOGO} alt="" />
             <p>{listData[0].city}</p>
           </div>
+          <div className="right_profile_info_reviews">
+            <img src={STAR_ICON} alt="" />
+            <p>
+              {(
+                listData[0].rating
+                  .map((rate) => rate.mark)
+                  .reduce((acc, val) => acc + val) / listData[0].rating.length
+              ).toFixed(2)}
+            </p>
+          </div>
         </div>
         <div className="right_more_profile_info">
           <h2>Informacje</h2>
@@ -55,7 +66,7 @@ export const Messages = () => {
               <Label key={label}>{label}</Label>
             ))}
           </div>
-          <div className="right_more_prfile_info_review"></div>
+          <p>Ostatnie komentarze</p>
           <div className="right_more_prfile_info_review_comment"></div>
         </div>
       </div>
