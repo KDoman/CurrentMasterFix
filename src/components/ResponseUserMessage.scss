@@ -1,0 +1,14 @@
+.user_message_response_container {
+  width: 100%;
+  display: flex;
+  height: fit-content;
+  margin: 2rem 0;
+
+  .user_message_response {
+    width: 80%;
+    background-color: #d3d3d3;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-left: 1rem;
+  }
+}

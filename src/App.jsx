@@ -9,6 +9,7 @@ import { LoginPage } from "./routes/LoginPage/LoginPage";
 import { SinglePage } from "./routes/SinglePage/SinglePage";
 
 import { Messages } from "./routes/Messages/Messages";
+import { AddOrder } from "./routes/AddOrder/AddOrder";
 
 function App() {
   const router = createBrowserRouter([
@@ -34,6 +35,12 @@ function App() {
         {
           path: "/messages",
           element: <Messages />,
+          children: [
+            {
+              path: "/messages/addOrder",
+              element: <AddOrder />,
+            },
+          ],
         },
       ],
     },

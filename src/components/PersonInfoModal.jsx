@@ -1,5 +1,4 @@
 import "./PersonInfoModal.scss";
-import BACK_ICON from "../assets/Back.svg";
 import { Link } from "react-router-dom";
 import PERSON_LOGO from "../assets/Person.svg";
 import HOME_LOGO from "../assets/Home.svg";
@@ -7,15 +6,14 @@ import { Reviews } from "./Reviews";
 import STAR_LOGO from "../assets/Star.svg";
 import { EndOfWord } from "../helpers/EndOfWord";
 import { GetReviewAvg } from "../helpers/GetReviewAvg";
+import { BackIcon } from "./BackIcon";
 
 export const PersonInfoModal = ({ obj }) => {
   return (
     <div className="person_info_container">
       <div className="person_info_section">
         <Link to={`/list`}>
-          <div className="back_icon_container">
-            <img src={BACK_ICON} alt="" className="back_icon" />
-          </div>
+          <BackIcon />
         </Link>
         <img src={obj.img} />
         <div className="person_info_modal_name">

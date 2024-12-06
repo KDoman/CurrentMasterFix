@@ -3,20 +3,21 @@ import "./Messages.scss";
 import { listData } from "../../data/data";
 import { Label } from "../../components/Label";
 import HOME_LOGO from "../../assets/Home.svg";
-import BACK_ICON from "../../assets/Back.svg";
 import STAR_ICON from "../../assets/Star.svg";
-import { Link } from "react-router-dom";
+import ADD_ICON from "../../assets/Add.svg";
+import { Link, Outlet } from "react-router-dom";
 import { GetReviewAvg } from "../../helpers/GetReviewAvg";
 import SEND_ICON from "../../assets/Send.svg";
 import { ReviewComment } from "../../components/ReviewComment";
+import { UserMessage } from "../../components/UserMessage";
+import { ResponseUserMessage } from "../../components/ResponseUserMessage";
+import { BackIcon } from "../../components/BackIcon";
 export const Messages = () => {
   return (
     <>
       <div className="messages_page_entry_div">
         <Link to={`/list`}>
-          <div className="back_icon_container">
-            <img src={BACK_ICON} alt="" className="back_icon" />
-          </div>
+          <BackIcon />
         </Link>
         <h1>Historia wiadomości</h1>
       </div>
@@ -31,14 +32,44 @@ export const Messages = () => {
         </div>
         <div className="left_history_messages">
           <HistoryChat />
+          <HistoryChat />
+          <HistoryChat />
+          <HistoryChat />
+          <HistoryChat />
+          <HistoryChat />
+          <HistoryChat />
+          <HistoryChat />
+          <HistoryChat />
+          <HistoryChat />
+          <HistoryChat />
+          <HistoryChat />
+          <HistoryChat />
+          <HistoryChat />
+          <HistoryChat />
+          <HistoryChat />
+          <HistoryChat />
+          <HistoryChat />
+          <HistoryChat />
+          <HistoryChat />
         </div>
         <div className="middle_title_name">
-          <img src={listData[0].img} />
-          <p>
-            {listData[0].name} {listData[0].surname}
-          </p>
+          <div className="middle_title_img_and_name">
+            <img src={listData[0].img} />
+            <p>
+              {listData[0].name} {listData[0].surname}
+            </p>
+          </div>
+          <Link to={"/messages/addOrder"}>
+            <div className="middle_title_container_for_svg">
+              <img src={ADD_ICON} alt="" />
+            </div>
+          </Link>
         </div>
-        <div className="middle_message_chat"></div>
+        <div className="middle_message_chat">
+          <Outlet />
+          <UserMessage>this is user message.</UserMessage>
+          <ResponseUserMessage>this is response Message</ResponseUserMessage>
+        </div>
         <div className="middle_text_input">
           <input
             type="text"
