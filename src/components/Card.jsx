@@ -47,10 +47,12 @@ export const Card = ({ item }) => {
         </div>
         <div className="text_down_card_info">
           <div className="text_contact_icons">
-            <img
-              src={CHAT_ICON}
-              alt="Obrazek w formacie SVG przedstawiający wiadomości"
-            />
+            <Link to={"/messages"}>
+              <img
+                src={CHAT_ICON}
+                alt="Obrazek w formacie SVG przedstawiający wiadomości"
+              />
+            </Link>
             <img
               src={SAVE_ICON}
               alt="Obrazek w formacie SVG przedstawiający możliwość zapisania fachowca do ulubionych"

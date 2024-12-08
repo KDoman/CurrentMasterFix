@@ -31,7 +31,11 @@
       img {
         max-width: 1.5rem;
         transition: all 0.2s ease;
-
+        z-index: 999;
+        border-radius: 0.2rem;
+        &:hover {
+          background-color: var(--main-color);
+        }
         &:hover {
           scale: 1.1;
         }

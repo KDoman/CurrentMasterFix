@@ -6,10 +6,13 @@ import { ListPage } from "./routes/listPage/ListPage";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { LoginPage } from "./routes/LoginPage/LoginPage";
+import { SignUp } from "./routes/signUpPage/SignUp";
 import { SinglePage } from "./routes/SinglePage/SinglePage";
 
 import { Messages } from "./routes/Messages/Messages";
-import { AddOrder } from "./routes/AddOrder/AddOrder";
+import { MoreProffesionalistInfo } from "./routes/moreProffesionalInfoPage/MoreProffesionalistInfo";
+import { ContactPage } from "./routes/contactPage/ContactPage";
+import { CompanyPage } from "./routes/companyPage/CompanyPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -33,12 +36,24 @@ function App() {
           element: <LoginPage />,
         },
         {
+          path: "/signUp",
+          element: <SignUp />,
+        },
+        {
+          path: "/contact",
+          element: <ContactPage />,
+        },
+        {
+          path: "/aboutUs",
+          element: <CompanyPage />,
+        },
+        {
           path: "/messages",
           element: <Messages />,
           children: [
             {
-              path: "/messages/addOrder",
-              element: <AddOrder />,
+              path: "/messages/more_proffesionalist_info",
+              element: <MoreProffesionalistInfo />,
             },
           ],
         },

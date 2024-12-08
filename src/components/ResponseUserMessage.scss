@@ -2,7 +2,6 @@
   width: 100%;
   display: flex;
   height: fit-content;
-  margin: 2rem 0;
 
   .user_message_response {
     width: 80%;
@@ -10,5 +9,6 @@
     padding: 1rem;
     border-radius: 0.5rem;
     margin-left: 1rem;
+    margin: 1rem;
   }
 }

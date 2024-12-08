@@ -1,7 +1,7 @@
-import "./LoginPage.scss";
+import "./SignUp.scss";
 import MASTER_FULL_LOGO from "../../assets/Master_fix_full_logo.png";
 
-export const LoginPage = () => {
+export const SignUp = () => {
   return (
     <div className="login_page_container">
       <div className="left">
@@ -15,7 +15,15 @@ export const LoginPage = () => {
             <label htmlFor="password">Hasło</label>
             <input type="password" name="password" id="password" />
           </div>
-          <button type="submit">Zaloguj się</button>
+          <div className="input_div">
+            <label htmlFor="email">Email</label>
+            <input type="email" name="email" id="email" />
+          </div>
+          <div className="input_div">
+            <label htmlFor="name">Imię</label>
+            <input type="text" id="name" />
+          </div>
+          <button type="submit">Zarejestruj się</button>
         </form>
       </div>
       <div className="right">

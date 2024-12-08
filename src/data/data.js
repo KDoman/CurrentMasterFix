@@ -18,6 +18,8 @@ export const listData = [
       "Polecany przez klientów",
     ],
     professions: ["Elektryk", "Hydraulik"],
+    aboutMe:
+      "Jestem doświadczonym elektrykiem i hydraulikiem z wieloletnią praktyką w Warszawie. Specjalizuję się w kompleksowych naprawach instalacji elektrycznych i wodno-kanalizacyjnych.",
   },
   {
     id: 2,
@@ -34,6 +36,8 @@ export const listData = [
     ],
     labels: ["Nowy użytkownik", "Dba o szczegóły", "Zaufany fachowiec"],
     professions: ["Malarz", "Złota rączka"],
+    aboutMe:
+      "Jestem doświadczonym elektrykiem i hydraulikiem z wieloletnią praktyką w Warszawie. Specjalizuję się w kompleksowych naprawach instalacji elektrycznych i wodno-kanalizacyjnych.",
   },
   {
     id: 3,
@@ -54,6 +58,8 @@ export const listData = [
       "Polecany przez klientów",
     ],
     professions: ["Elektryk", "Mechanik", "Stolarz"],
+    aboutMe:
+      "Jestem doświadczonym elektrykiem i hydraulikiem z wieloletnią praktyką w Warszawie. Specjalizuję się w kompleksowych naprawach instalacji elektrycznych i wodno-kanalizacyjnych.",
   },
   {
     id: 4,
@@ -70,6 +76,8 @@ export const listData = [
     ],
     labels: ["Zaufany fachowiec", "Doświadczony fachowiec", "Dba o szczegóły"],
     professions: ["Ogrodnik", "Złota rączka"],
+    aboutMe:
+      "Jestem doświadczonym elektrykiem i hydraulikiem z wieloletnią praktyką w Warszawie. Specjalizuję się w kompleksowych naprawach instalacji elektrycznych i wodno-kanalizacyjnych.",
   },
   {
     id: 5,
@@ -90,6 +98,8 @@ export const listData = [
       "Szybka realizacja",
     ],
     professions: ["Hydraulik", "Malarz", "Stolarz"],
+    aboutMe:
+      "Jestem doświadczonym elektrykiem i hydraulikiem z wieloletnią praktyką w Warszawie. Specjalizuję się w kompleksowych naprawach instalacji elektrycznych i wodno-kanalizacyjnych.",
   },
   {
     id: 6,
@@ -106,6 +116,8 @@ export const listData = [
     ],
     labels: ["Nowy użytkownik", "Dba o szczegóły", "Zaufany fachowiec"],
     professions: ["Mechanik", "Ogrodnik"],
+    aboutMe:
+      "Jestem doświadczonym elektrykiem i hydraulikiem z wieloletnią praktyką w Warszawie. Specjalizuję się w kompleksowych naprawach instalacji elektrycznych i wodno-kanalizacyjnych.",
   },
   {
     id: 7,
@@ -126,6 +138,8 @@ export const listData = [
       "Wysoka jakość usług",
     ],
     professions: ["Elektryk", "Malarz", "Mechanik"],
+    aboutMe:
+      "Jestem doświadczonym elektrykiem i hydraulikiem z wieloletnią praktyką w Warszawie. Specjalizuję się w kompleksowych naprawach instalacji elektrycznych i wodno-kanalizacyjnych.",
   },
   {
     id: 8,
@@ -142,6 +156,8 @@ export const listData = [
     ],
     labels: ["Nowy użytkownik", "Szybka realizacja", "Polecany przez klientów"],
     professions: ["Złota rączka", "Ogrodnik"],
+    aboutMe:
+      "Jestem doświadczonym elektrykiem i hydraulikiem z wieloletnią praktyką w Warszawie. Specjalizuję się w kompleksowych naprawach instalacji elektrycznych i wodno-kanalizacyjnych.",
   },
   {
     id: 9,
@@ -162,6 +178,8 @@ export const listData = [
       "Zaufany fachowiec",
     ],
     professions: ["Stolarz", "Hydraulik", "Elektryk"],
+    aboutMe:
+      "Jestem doświadczonym elektrykiem i hydraulikiem z wieloletnią praktyką w Warszawie. Specjalizuję się w kompleksowych naprawach instalacji elektrycznych i wodno-kanalizacyjnych.",
   },
   {
     id: 10,
@@ -178,5 +196,7 @@ export const listData = [
     ],
     labels: ["Dba o szczegóły", "Wysoka jakość usług", "Nowy użytkownik"],
     professions: ["Mechanik", "Malarz"],
+    aboutMe:
+      "Jestem doświadczonym elektrykiem i hydraulikiem z wieloletnią praktyką w Warszawie. Specjalizuję się w kompleksowych naprawach instalacji elektrycznych i wodno-kanalizacyjnych.",
   },
 ];

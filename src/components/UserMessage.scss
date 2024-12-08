@@ -3,13 +3,12 @@
   display: flex;
   justify-content: flex-end;
   height: fit-content;
-  margin: 2rem 0;
 
   .user_message {
     width: 80%;
     background-color: #f2f2f2;
     padding: 1rem;
     border-radius: 0.5rem;
-    margin-right: 1rem;
+    margin: 1rem 1rem 1rem 0;
   }
 }

@@ -4,7 +4,7 @@ import { listData } from "../../data/data";
 import { Label } from "../../components/Label";
 import HOME_LOGO from "../../assets/Home.svg";
 import STAR_ICON from "../../assets/Star.svg";
-import ADD_ICON from "../../assets/Add.svg";
+import INFO_ICON from "../../assets/Info.svg";
 import { Link, Outlet } from "react-router-dom";
 import { GetReviewAvg } from "../../helpers/GetReviewAvg";
 import SEND_ICON from "../../assets/Send.svg";
@@ -59,9 +59,9 @@ export const Messages = () => {
               {listData[0].name} {listData[0].surname}
             </p>
           </div>
-          <Link to={"/messages/addOrder"}>
+          <Link to={"/messages/more_proffesionalist_info"}>
             <div className="middle_title_container_for_svg">
-              <img src={ADD_ICON} alt="" />
+              <img src={INFO_ICON} alt="" />
             </div>
           </Link>
         </div>
