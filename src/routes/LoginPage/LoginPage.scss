@@ -39,10 +39,21 @@
           background-color: var(--main-color);
         }
       }
+
       img {
         display: none;
         @include md {
           display: initial;
+          max-width: 100%;
+        }
+      }
+      .forgot_password {
+        text-decoration: underline;
+        text-underline-offset: 0.3em;
+        font-size: 0.8rem;
+        transition: font-size 0.2s ease-in-out;
+        &:hover {
+          font-size: 0.85rem;
         }
       }
     }

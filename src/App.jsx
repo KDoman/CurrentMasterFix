@@ -13,6 +13,8 @@ import { Messages } from "./routes/Messages/Messages";
 import { MoreProffesionalistInfo } from "./routes/moreProffesionalInfoPage/MoreProffesionalistInfo";
 import { ContactPage } from "./routes/contactPage/ContactPage";
 import { CompanyPage } from "./routes/companyPage/CompanyPage";
+import { ProffesionalistForm } from "./routes/ProffesionalistForm/ProffesionalistForm";
+import { AccountSettings } from "./routes/AccountSettings/AccountSettings";
 
 function App() {
   const router = createBrowserRouter([
@@ -47,6 +49,11 @@ function App() {
           path: "/aboutUs",
           element: <CompanyPage />,
         },
+        {
+          path: "/account",
+          element: <AccountSettings />,
+        },
+        { path: "/proffesionalist_form", element: <ProffesionalistForm /> },
         {
           path: "/messages",
           element: <Messages />,

@@ -1,6 +1,6 @@
 import "./LoginPage.scss";
 import MASTER_FULL_LOGO from "../../assets/Master_fix_full_logo.png";
-
+import { Link } from "react-router-dom";
 export const LoginPage = () => {
   return (
     <div className="login_page_container">
@@ -15,6 +15,9 @@ export const LoginPage = () => {
             <label htmlFor="password">Hasło</label>
             <input type="password" name="password" id="password" />
           </div>
+          <Link to="/signUp">
+            <a className="forgot_password">Nie posiadam konta</a>
+          </Link>
           <button type="submit">Zaloguj się</button>
         </form>
       </div>

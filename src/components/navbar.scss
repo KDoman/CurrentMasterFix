@@ -105,4 +105,28 @@ nav {
       }
     }
   }
+
+  .logged_in_div {
+    transition: transform 0.15s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    img {
+      max-width: 2rem;
+      border: 2px solid black;
+      border-radius: 50%;
+    }
+    &:hover {
+      transform: scale(1.05);
+    }
+    &.active {
+      filter: invert(1);
+    }
+    p {
+      filter: invert(1);
+    }
+  }
 }

@@ -1,7 +1,29 @@
 import "./Filter.scss";
 import SEARCH_ICON from "../assets/Search_icon.svg";
+import { useContext, useState } from "react";
+import { GlobalStates } from "../context/GlobalState";
 
-export const Filter = () => {
+export const Filter = ({ setFilterBy }) => {
+  const { query, setQuery } = useContext(GlobalStates);
+  const [location, setLocation] = useState(query.location);
+  const [proffesion, setProffesion] = useState(query.proffesion);
+  const [filterSelect, setFilterSelect] = useState("mark");
+
+  const proffestionArr = [
+    "Elektryk",
+    "Hydraulik",
+    "Malarz",
+    "Złota rączka",
+    "Mechanik",
+    "Stolarz",
+    "Ogrodnik",
+  ];
+
+  const handleSearchClick = () => {
+    setQuery({ location, proffesion });
+    setFilterBy(filterSelect);
+  };
+
   return (
     <div className="filter">
       <h1>Wyniki wyszukiwania</h1>
@@ -10,7 +32,13 @@ export const Filter = () => {
           <label htmlFor="city" className="city">
             Lokalizacja
           </label>
-          <input name="city" id="city" list="city_list" />
+          <input
+            name="location"
+            id="city"
+            list="city_list"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+          />
           <datalist id="city_list">
             <option value="Warszawa" />
             <option value="Kraków" />
@@ -19,34 +47,35 @@ export const Filter = () => {
       </div>
       <div className="bottom">
         <div className="item">
-          <label htmlFor="category" className="category">
-            {/* tutaj mapowanie dostępnych kategorii */}
+          <label htmlFor="proffesion" className="category">
             Kategoria
           </label>
-          <select>
-            <option>Elektryk</option>
-            <option>Mechanik</option>
-            <option> Złota rączka</option>
+          <select
+            name="proffesion"
+            value={proffesion}
+            onChange={(e) => setProffesion(e.target.value)}
+          >
+            <option hidden>Wybierz</option>
+            {proffestionArr.map((prof) => (
+              <option key={prof} value={prof}>
+                {prof}
+              </option>
+            ))}
           </select>
         </div>
         <div className="item">
-          <label htmlFor="max_ditance" className="label">
-            Maksymalny dystans
-          </label>
-          <input type="number" name="max_ditance" id="max_ditance" />
-        </div>
-        <div className="item">
-          <label htmlFor="city" className="city">
+          <label htmlFor="sort" className="city">
             Filtruj po
           </label>
-          <select>
-            <option>Najwięcej ocen</option>
-            <option>Najwyższa ocena</option>
-            <option>Nabliżej</option>
+          <select onChange={(e) => setFilterSelect(e.target.value)}>
+            <option selected value={"mark"}>
+              Najwyższa ocena
+            </option>
+            <option value={"count"}>Najwięcej ocen</option>
           </select>
         </div>
         <div className="button_wrapper">
-          <button>
+          <button onClick={handleSearchClick}>
             <img src={SEARCH_ICON} alt="Ikonka symbolizująca lupę" />
           </button>
         </div>
