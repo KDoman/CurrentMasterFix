@@ -1,0 +1,101 @@
+@import "../../responsive.scss";
+.proffesionalist_form_container {
+  display: flex;
+  width: 100%;
+  min-height: calc(100vh - 100px);
+  position: relative;
+
+  .left {
+    flex: 3;
+  }
+  .right {
+    flex: 2;
+    background-color: #f3f3f3;
+    height: 100rem;
+    @include md {
+      display: none;
+    }
+  }
+  .form_container {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    h1 {
+      text-align: center;
+      width: 25ch;
+      @include md {
+        font-size: 1.5rem;
+      }
+    }
+    form {
+      box-shadow: 0 0 5px #d1d1d1;
+      margin: 4rem 0;
+      padding: 1rem 3rem;
+      display: flex;
+      flex-direction: column;
+      width: 30rem;
+      input {
+        padding: 1rem;
+      }
+      select {
+        scrollbar-width: none;
+        option {
+          padding: 0.4rem;
+          &.selected {
+            background-color: #dff0d8;
+            color: #3c763d;
+            font-weight: bold;
+          }
+        }
+      }
+      textarea {
+        max-width: 100%;
+        padding: 0.5rem;
+      }
+      label {
+        padding: 2rem 0 0.5rem 0;
+      }
+      .submit_button {
+        margin-top: 1rem;
+        margin-bottom: 3rem;
+        font-size: 1rem;
+        border: 1px solid black;
+        padding: 1rem;
+        border-radius: 0.2rem;
+        cursor: pointer;
+        background-color: #f3f3f3;
+        transition: background-color 0.15s ease-in-out;
+        &:hover {
+          background-color: var(--main-color);
+        }
+        @include md {
+          background-color: #fff;
+        }
+      }
+    }
+    .selected_categories_container {
+      p {
+        padding: 2rem 0 0.5rem 0;
+      }
+
+      .selected-categories {
+        display: flex;
+        max-width: 100%;
+        flex-wrap: wrap;
+        border: 1px solid black;
+        .selected-category {
+          display: flex;
+          gap: 0.2rem;
+          margin: 0.2rem 1rem;
+        }
+      }
+    }
+    img {
+      max-width: 100%;
+      margin: 4rem 0;
+    }
+  }
+}

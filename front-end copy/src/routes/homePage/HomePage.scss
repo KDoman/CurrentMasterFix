@@ -1,0 +1,164 @@
+@import "../../responsive.scss";
+.home_page {
+  display: flex;
+  .text_container {
+    flex: 3;
+    height: max-content;
+    padding: 4rem 0;
+
+    .heading_wrapper {
+      margin-top: 2rem;
+      margin-right: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      height: 100%;
+      justify-content: center;
+      @include md {
+        gap: 3rem;
+      }
+
+      @include sm {
+        gap: 2rem;
+      }
+
+      p,
+      h1,
+      span {
+        padding-right: 1rem;
+      }
+
+      h1 {
+        font-size: 5.5rem;
+      }
+
+      h2 {
+        display: block;
+        font-size: 3rem;
+      }
+      .boxes_of_numbers {
+        display: flex;
+        justify-content: space-between;
+
+        @include sm {
+          flex-direction: column;
+          justify-content: flex-start;
+        }
+
+        .box {
+          @include sm {
+            margin-top: 2rem;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid #d3d3d3;
+
+            &:last-child {
+              margin-bottom: 2rem;
+            }
+          }
+          h3 {
+            @include sm {
+              font-size: 1rem;
+            }
+          }
+          h2 {
+            @include sm {
+              font-size: 2rem;
+            }
+          }
+        }
+      }
+      .p_text {
+        line-height: 1.4rem;
+      }
+    }
+  }
+  .img_container {
+    flex: 2;
+    background-color: #f3f3f3;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    min-height: 50rem;
+    @include md {
+      display: none;
+    }
+
+    img {
+      width: 100%;
+      position: absolute;
+      right: 0;
+      top: 25%;
+      animation-name: flyingImg;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+      @include md {
+        display: none;
+      }
+    }
+  }
+}
+
+.proffesionalist_div {
+  display: flex;
+  position: relative;
+  height: 25rem;
+  .left {
+    flex: 3;
+    background-color: #f3f3f3;
+    @include md {
+      display: none;
+    }
+  }
+  .right {
+    flex: 2;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 4rem;
+    @include md {
+      background-color: #f3f3f3;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      span {
+        margin-top: 1rem;
+        font-size: 1.8rem;
+        display: block;
+      }
+    }
+    button {
+      font-size: 1.1rem;
+      border: 1px solid black;
+      padding: 1rem;
+      border-radius: 0.2rem;
+      cursor: pointer;
+      background-color: #f3f3f3;
+      transition: background-color 0.15s ease-in-out;
+      &:hover {
+        background-color: var(--main-color);
+      }
+      @include md {
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+@keyframes flyingImg {
+  0% {
+    transform: translateY(-20px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-20px);
+  }
+}

@@ -1,0 +1,80 @@
+@import "../responsive.scss";
+
+.card_container {
+  padding: 1rem;
+  margin-top: 1rem;
+
+  border-radius: 0.2rem;
+  border: 1px solid #d6d6d6;
+  display: flex;
+  gap: 1rem;
+  transition: all 0.2s ease;
+  position: relative;
+
+  &:hover {
+    box-shadow: 0 0 5px 2px #d6d6d6;
+  }
+  .text_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    .text_down_card_info {
+      display: flex;
+      flex-direction: column;
+
+      .text_contact_icons {
+        position: absolute;
+        bottom: 2.5rem;
+        right: 1rem;
+      }
+      img {
+        max-width: 1.5rem;
+        transition: all 0.2s ease;
+        z-index: 999;
+        border-radius: 0.2rem;
+        &:hover {
+          background-color: var(--main-color);
+        }
+        &:hover {
+          scale: 1.1;
+        }
+      }
+    }
+    .text_name_container {
+      display: flex;
+      gap: 0.2rem;
+      align-items: center;
+      text-transform: capitalize;
+
+      .text_city_container {
+        margin-left: 0.8rem;
+        display: flex;
+        align-items: center;
+
+        .text_city {
+          color: #929292;
+        }
+      }
+    }
+    .text_rating {
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      .text_rating_p {
+        .reviews_counter {
+          margin-right: 0.2rem;
+          color: #929292;
+        }
+      }
+    }
+  }
+  .svg_icon {
+    max-width: 1.5rem;
+  }
+
+  .text_labels {
+    display: flex;
+    gap: 1rem;
+  }
+}

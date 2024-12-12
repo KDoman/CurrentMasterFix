@@ -1,0 +1,144 @@
+@import "../../responsive.scss";
+.company_page_container {
+  height: 144%;
+  width: 100%;
+  display: flex;
+  position: relative;
+
+  .left {
+    flex: 3;
+    @include md {
+      display: none;
+    }
+  }
+  .right {
+    background-color: #f1f1f1;
+    flex: 2;
+    z-index: -10;
+    @include md {
+      display: none;
+    }
+  }
+  .company_page_content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    img {
+      margin: 4rem auto 0 auto;
+      display: block;
+      max-width: 100%;
+    }
+    .company_page_steps_container {
+      position: relative;
+      margin-top: 6rem;
+      min-height: 30rem;
+      padding: 3rem;
+      letter-spacing: 0.2rem;
+      text-transform: uppercase;
+      color: #fff;
+      h2 {
+        text-shadow: 1px 1px 1px black;
+        font-size: 2.5rem;
+        @include md {
+          font-size: 2rem;
+        }
+      }
+      p {
+        font-size: 1.2rem;
+        padding-top: 3rem;
+        text-underline-offset: 0.3rem;
+        text-shadow: 1px 1px 1px black;
+        line-height: 3rem;
+        @include md {
+          font-size: 1rem;
+        }
+      }
+      @include md {
+        padding: 1rem;
+      }
+    }
+    .company_page_steps_container::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.45;
+      z-index: -1;
+      background: url("../../assets/Our_mission.jpg");
+      background-size: cover;
+      background-repeat: none;
+      background-position: 50%;
+      filter: grayscale(1);
+    }
+    .company_page_steps_second_container {
+      position: relative;
+      min-height: 30rem;
+      padding: 3rem;
+      letter-spacing: 0.2rem;
+      text-transform: uppercase;
+      h2 {
+        font-size: 2.5rem;
+        @include md {
+          font-size: 2rem;
+        }
+      }
+      p {
+        font-size: 1.2rem;
+        padding-top: 3rem;
+        line-height: 3rem;
+        @include md {
+          font-size: 1rem;
+        }
+      }
+      @include md {
+        padding: 1rem;
+      }
+    }
+    .company_page_steps_third_container {
+      position: relative;
+      min-height: 30rem;
+      padding: 3rem;
+      letter-spacing: 0.2rem;
+      text-transform: uppercase;
+      color: #fff;
+      h2 {
+        text-shadow: 1px 1px 1px black;
+        font-size: 2.5rem;
+        @include md {
+          font-size: 2rem;
+        }
+      }
+      p {
+        font-size: 1.2rem;
+        padding-top: 3rem;
+        text-underline-offset: 0.3rem;
+        text-shadow: 1px 1px 1px black;
+        line-height: 3rem;
+        @include md {
+          font-size: 1rem;
+        }
+      }
+      @include md {
+        padding: 1rem;
+      }
+    }
+    .company_page_steps_third_container::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.45;
+      z-index: -1;
+      background: url("../../assets/Our_mission.jpg");
+      background-size: cover;
+      background-repeat: none;
+      background-position: 50%;
+      filter: grayscale(1);
+    }
+  }
+}

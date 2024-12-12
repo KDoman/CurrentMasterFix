@@ -1,0 +1,22 @@
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+  --main-color: #bbbbbb;
+}
+::-webkit-scrollbar {
+  width: initial;
+  background: transparent;
+}
+
+* {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+input:focus,
+input:active,
+select:focus,
+select:active {
+  outline-color: var(--main-color);
+  outline-offset: 1px;
+}
