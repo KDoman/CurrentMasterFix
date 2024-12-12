@@ -15,6 +15,7 @@ import { ContactPage } from "./routes/contactPage/ContactPage";
 import { CompanyPage } from "./routes/companyPage/CompanyPage";
 import { ProffesionalistForm } from "./routes/ProffesionalistForm/ProffesionalistForm";
 import { AccountSettings } from "./routes/AccountSettings/AccountSettings";
+import { EditAccountView } from "./routes/EditAccountView/EditAccountView";
 
 function App() {
   const router = createBrowserRouter([
@@ -52,6 +53,7 @@ function App() {
         {
           path: "/account",
           element: <AccountSettings />,
+          children: [{ path: "/account/edit", element: <EditAccountView /> }],
         },
         { path: "/proffesionalist_form", element: <ProffesionalistForm /> },
         {

@@ -1,12 +1,12 @@
 export const listData = [
   {
     id: 1,
-    name: "Jan",
-    surname: "Nowak",
+    name: "jan",
+    surname: "nowak",
     img: "https://randomuser.me/api/portraits/men/1.jpg",
-    city: "Warszawa",
+    city: "warszawa",
     latitude: 52.2831,
-    longitude: 21.045, // Targówek
+    longitude: 21.045,
     rating: [
       { mark: 4.5, message: "Świetny fachowiec!" },
       { mark: 3.0, message: "Mógłby być bardziej punktualny." },
@@ -23,10 +23,10 @@ export const listData = [
   },
   {
     id: 2,
-    name: "Adam",
-    surname: "Zieliński",
+    name: "adam",
+    surname: "zieliński",
     img: "https://randomuser.me/api/portraits/men/2.jpg",
-    city: "Warszawa",
+    city: "warszawa",
     latitude: 52.3236,
     longitude: 21.0035, // Białołęka
     rating: [
@@ -41,10 +41,10 @@ export const listData = [
   },
   {
     id: 3,
-    name: "Tomasz",
-    surname: "Jankowski",
+    name: "tomasz",
+    surname: "jankowski",
     img: "https://randomuser.me/api/portraits/men/3.jpg",
-    city: "Warszawa",
+    city: "warszawa",
     latitude: 52.2319,
     longitude: 21.0122, // Śródmieście
     rating: [
@@ -63,10 +63,10 @@ export const listData = [
   },
   {
     id: 4,
-    name: "Paweł",
-    surname: "Kowalski",
+    name: "paweł",
+    surname: "kowalski",
     img: "https://randomuser.me/api/portraits/men/4.jpg",
-    city: "Warszawa",
+    city: "warszawa",
     latitude: 52.2687,
     longitude: 21.0478, // Bródno
     rating: [
@@ -81,10 +81,10 @@ export const listData = [
   },
   {
     id: 5,
-    name: "Michał",
-    surname: "Lewandowski",
+    name: "michał",
+    surname: "lewandowski",
     img: "https://randomuser.me/api/portraits/men/5.jpg",
-    city: "Warszawa",
+    city: "warszawa",
     latitude: 52.2598,
     longitude: 21.0304, // Zacisze
     rating: [
@@ -103,10 +103,10 @@ export const listData = [
   },
   {
     id: 6,
-    name: "Krzysztof",
-    surname: "Wiśniewski",
+    name: "krzysztof",
+    surname: "wiśniewski",
     img: "https://randomuser.me/api/portraits/men/6.jpg",
-    city: "Warszawa",
+    city: "warszawa",
     latitude: 52.237,
     longitude: 21.0486, // Praga Północ
     rating: [
@@ -121,10 +121,10 @@ export const listData = [
   },
   {
     id: 7,
-    name: "Piotr",
-    surname: "Dąbrowski",
+    name: "piotr",
+    surname: "dąbrowski",
     img: "https://randomuser.me/api/portraits/men/7.jpg",
-    city: "Warszawa",
+    city: "warszawa",
     latitude: 52.2476,
     longitude: 21.0449, // Żoliborz
     rating: [
@@ -143,10 +143,10 @@ export const listData = [
   },
   {
     id: 8,
-    name: "Andrzej",
-    surname: "Szymański",
+    name: "andrzej",
+    surname: "szymański",
     img: "https://randomuser.me/api/portraits/men/8.jpg",
-    city: "Warszawa",
+    city: "warszawa",
     latitude: 52.234,
     longitude: 21.0256, // Wola
     rating: [
@@ -161,10 +161,10 @@ export const listData = [
   },
   {
     id: 9,
-    name: "Marcin",
-    surname: "Pawlak",
+    name: "marcin",
+    surname: "pawlak",
     img: "https://randomuser.me/api/portraits/men/9.jpg",
-    city: "Warszawa",
+    city: "warszawa",
     latitude: 52.2396,
     longitude: 21.0147, // Powiśle
     rating: [
@@ -183,10 +183,10 @@ export const listData = [
   },
   {
     id: 10,
-    name: "Łukasz",
-    surname: "Wójcik",
+    name: "łukasz",
+    surname: "wójcik",
     img: "https://randomuser.me/api/portraits/men/10.jpg",
-    city: "Warszawa",
+    city: "warszawa",
     latitude: 52.234,
     longitude: 21.0319, // Mokotów
     rating: [

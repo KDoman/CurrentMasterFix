@@ -14,6 +14,10 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    .info {
+      text-transform: capitalize;
+    }
+
     span {
       font-weight: bold;
       padding-right: 0.3rem;

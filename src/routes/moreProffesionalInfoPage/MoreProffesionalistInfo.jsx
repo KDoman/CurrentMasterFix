@@ -11,13 +11,13 @@ export const MoreProffesionalistInfo = () => {
       </Link>
       <h2>Informacje na temat fachowca</h2>
       <div className="add_order_info">
-        <p>
+        <p className="info">
           <span>Imię</span> {listData[0].name}
         </p>
-        <p>
+        <p className="info">
           <span>Nazwisko</span> {listData[0].surname}
         </p>
-        <p>
+        <p className="info">
           <span>Miasto</span> {listData[0].city}
         </p>
         <p>

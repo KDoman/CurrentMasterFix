@@ -24,10 +24,14 @@ export const SearchBar = () => {
           name="location"
           id="location"
           placeholder="Miasto"
-          onChange={(e) => setQuery({ ...query, location: e.target.value })}
+          onChange={(e) =>
+            setQuery({ ...query, location: e.target.value.toLowerCase() })
+          }
         />
         <select
-          onChange={(e) => setQuery({ ...query, proffesion: e.target.value })}
+          onChange={(e) =>
+            setQuery({ ...query, proffesion: e.target.value.toLowerCase() })
+          }
         >
           <option selected hidden className="first-select">
             Wybierz

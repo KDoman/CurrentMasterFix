@@ -19,6 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-transform: capitalize;
 
   input {
     border: none;
@@ -34,6 +35,7 @@
   grid-area: 2 / 1 / 6 / 2;
   overflow-y: scroll;
   scrollbar-width: none;
+  text-transform: capitalize;
 }
 .middle_title_name {
   grid-area: 1 / 2 / 2 / 5;
@@ -41,6 +43,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
+  text-transform: capitalize;
+
   .middle_title_img_and_name {
     display: flex;
     align-items: center;
@@ -105,6 +109,7 @@
   }
 }
 .right_profile_info {
+  text-transform: capitalize;
   padding: 1rem;
   grid-area: 1 / 5 / 3 / 6;
   display: flex;
