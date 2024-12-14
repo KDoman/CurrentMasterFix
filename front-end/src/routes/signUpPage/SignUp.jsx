@@ -8,29 +8,31 @@ export const SignUp = () => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const req = fetch("http://localhost:5000/api/signUp", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          login,
-          password,
-          name,
-        }),
-      });
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
+  // const onSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const req = fetch("http://localhost:5000/api/signUp", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         login,
+  //         password,
+  //         name,
+  //       }),
+  //     });
+  //   } catch (err) {
+  //     console.error(err.message);
+  //   }
+  // };
 
   return (
     <div className="login_page_container">
       <div className="left">
-        <form onSubmit={(e) => onSubmit(e)}>
+        <form
+        //  onSubmit={(e) => onSubmit(e)}
+        >
           <img src={MASTER_FULL_LOGO} alt="Master całe Logo" />
           <div className="input_div">
             <label htmlFor="login">Login</label>

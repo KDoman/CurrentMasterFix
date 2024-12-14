@@ -2,6 +2,7 @@ import "./Filter.scss";
 import SEARCH_ICON from "../assets/Search_icon.svg";
 import { useContext, useState } from "react";
 import { GlobalStates } from "../context/GlobalState";
+import { proffestionArr } from "../data/proffesions";
 
 export const Filter = ({ setFilterBy }) => {
   const { query, setQuery } = useContext(GlobalStates);
@@ -9,18 +10,11 @@ export const Filter = ({ setFilterBy }) => {
   const [proffesion, setProffesion] = useState(query.proffesion);
   const [filterSelect, setFilterSelect] = useState("mark");
 
-  const proffestionArr = [
-    "Elektryk",
-    "Hydraulik",
-    "Malarz",
-    "Złota rączka",
-    "Mechanik",
-    "Stolarz",
-    "Ogrodnik",
-  ];
-
   const handleSearchClick = () => {
-    setQuery({ location, proffesion });
+    setQuery({
+      location,
+      proffesion,
+    });
     setFilterBy(filterSelect);
   };
 
@@ -36,7 +30,7 @@ export const Filter = ({ setFilterBy }) => {
             name="location"
             id="city"
             list="city_list"
-            value={location}
+            value={location.toLowerCase()}
             onChange={(e) => setLocation(e.target.value)}
           />
           <datalist id="city_list">

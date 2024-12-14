@@ -125,10 +125,6 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
-app.get("/", (req, res) => {
-  res.send("Server is running");
-});
 app.listen(PORT, () => {
   connectDB();
-  console.log("Server started at " + PORT);
 });

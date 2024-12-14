@@ -5,11 +5,17 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { GlobalStates } from "../context/GlobalState";
 import PERSON_SVG from "../assets/Person.svg";
+import { logoutUser } from "../api_utils/api";
 
 export const Navbar = () => {
-  const { isLoggedIn } = useContext(GlobalStates);
+  const { isLoggedIn, setIsLoggedIn } = useContext(GlobalStates);
 
   const [isHambOpen, setIsHambOpen] = useState(false);
+
+  const logOut = () => {
+    setIsLoggedIn(null);
+    logoutUser();
+  };
 
   const closeHambMenu = () => {
     setIsHambOpen((prev) => !prev);
@@ -54,11 +60,16 @@ export const Navbar = () => {
             </Link>
           </>
         ) : (
-          <Link to="/account">
-            <div className="logged_in_div">
-              <img src={PERSON_SVG} alt="" />
-            </div>
-          </Link>
+          <>
+            <Link to="/account">
+              <div className="logged_in_div">
+                <img src={PERSON_SVG} alt="" />
+              </div>
+            </Link>
+            <Link onClick={logOut} to={"/"}>
+              <a className="sign-up">Wyloguj</a>
+            </Link>
+          </>
         )}
 
         <div className="menuIcon">
@@ -70,6 +81,15 @@ export const Navbar = () => {
         </div>
 
         <div className={isHambOpen ? "menu active" : "menu"}>
+          <Link to={"/"} onClick={closeHambMenu}>
+            <a>Strona główna</a>
+          </Link>
+          <Link to={"/aboutUs"} onClick={closeHambMenu}>
+            <a>Firma</a>
+          </Link>
+          <Link to={"/contact"} onClick={closeHambMenu}>
+            <a>Kontakt</a>
+          </Link>
           {!isLoggedIn ? (
             <>
               <Link to={"/login"} onClick={closeHambMenu}>
@@ -80,22 +100,18 @@ export const Navbar = () => {
               </Link>
             </>
           ) : (
-            <Link to="/account">
-              <div className="logged_in_div active">
-                <p>Ustawienia</p>
-                <img src={PERSON_SVG} alt="" />
-              </div>
-            </Link>
+            <>
+              <Link to="/account">
+                <div className="logged_in_div active">
+                  <p>Ustawienia</p>
+                  <img src={PERSON_SVG} alt="" />
+                </div>
+              </Link>
+              <Link onClick={logOut} role="button" className="sign-up">
+                <a>Wyloguj</a>
+              </Link>
+            </>
           )}
-          <Link to={"/"} onClick={closeHambMenu}>
-            <a>Strona główna</a>
-          </Link>
-          <Link to={"/aboutUs"} onClick={closeHambMenu}>
-            <a>Firma</a>
-          </Link>
-          <Link to={"/contact"} onClick={closeHambMenu}>
-            <a>Kontakt</a>
-          </Link>
         </div>
       </div>
     </nav>

@@ -12,7 +12,7 @@ export const PersonInfoModal = ({ obj }) => {
   return (
     <div className="person_info_container">
       <div className="person_info_section">
-        <Link to={`/list`}>
+        <Link to={`/list`} role="button">
           <BackIcon />
         </Link>
         <img src={obj.img} />
@@ -35,7 +35,7 @@ export const PersonInfoModal = ({ obj }) => {
             </div>
           </div>
           <div className="button_container">
-            <Link to={`/messages`}>
+            <Link to={`/messages`} role="button">
               <button className="personal_modal_button">Skontaktuj się!</button>
             </Link>
           </div>

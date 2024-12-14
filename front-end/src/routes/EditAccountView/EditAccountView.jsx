@@ -1,36 +1,13 @@
 import "./EditAccountView.scss";
 import CROSS_SVG from "../../assets/Cross.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { CategorySelect } from "../../components/CategorySelect";
 
 export const EditAccountView = () => {
   const navigate = useNavigate();
 
   const onSaveClick = () => {
     navigate("/account");
-  };
-
-  const [professionArray, setProfessionArray] = useState([]);
-  const categories = [
-    "Elektryk",
-    "Hydraulik",
-    "Malarz",
-    "Złota rączka",
-    "Mechanik",
-    "Stolarz",
-    "Ogrodnik",
-  ];
-
-  const handleCategoryChange = (e) => {
-    const selectedValue = e.target.value;
-
-    if (selectedValue && !professionArray.includes(selectedValue)) {
-      setProfessionArray((prev) => [...prev, selectedValue]);
-    }
-  };
-
-  const onXClick = (profession) => {
-    setProfessionArray((prev) => prev.filter((item) => item !== profession));
   };
 
   return (
@@ -55,44 +32,7 @@ export const EditAccountView = () => {
             <label htmlFor="city">Miasto</label>
             <input type="text" id="city" name="city" />
           </div>
-
-          <div className="categories_box">
-            <label htmlFor="categories">Specjalizacje</label>
-            <select
-              id="categories"
-              multiple
-              size="7"
-              onChange={handleCategoryChange}
-            >
-              {categories.map((profession) => (
-                <option
-                  key={profession}
-                  value={profession}
-                  className={
-                    professionArray.includes(profession) ? "selected" : ""
-                  }
-                >
-                  {profession}
-                </option>
-              ))}
-            </select>
-            <div className="selected_categories_container">
-              <div className="selected-categories">
-                {professionArray.map((profession) => (
-                  <div key={profession} className="selected-category">
-                    {profession}
-                    <button
-                      type="button"
-                      className="remove-btn"
-                      onClick={() => onXClick(profession)}
-                    >
-                      ❌
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          <CategorySelect />
           <button onClick={onSaveClick}>Zapisz</button>
         </form>
       </div>

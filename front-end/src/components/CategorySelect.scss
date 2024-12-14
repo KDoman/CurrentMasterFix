@@ -1,0 +1,52 @@
+.categories_box {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    padding-bottom: 0.5rem;
+  }
+  select {
+    scrollbar-width: none;
+    option {
+      padding: 0.4rem;
+      &.selected {
+        background-color: #dff0d8;
+        color: #3c763d;
+        font-weight: bold;
+      }
+    }
+  }
+  .selected_categories_container {
+    padding: 1rem 0;
+    width: 100%;
+    color: #000;
+    text-shadow: none;
+    .selected-categories {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    .selected-category {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background-color: #f1f1f1;
+      margin: 0.2rem;
+      padding: 0.4rem;
+      border-radius: 0.3rem;
+      font-size: 0.8rem;
+
+      button {
+        max-width: 0.5rem;
+        max-height: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+        font-size: 0.6rem;
+        cursor: pointer;
+      }
+    }
+  }
+}
