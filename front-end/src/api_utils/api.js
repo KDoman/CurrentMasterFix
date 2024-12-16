@@ -20,7 +20,6 @@ async function fetchApi(endpoint, options = {}) {
   }
 }
 
-// Funkcja do logowania użytkownika
 export async function loginUser(login, password) {
   return await fetchApi("login", {
     method: "POST",
@@ -35,12 +34,14 @@ export async function registerUser(login, password, name = "") {
   });
 }
 
-// Funkcja do wylogowania użytkownika
 export async function logoutUser() {
   return await fetchApi("logout", { method: "POST" });
 }
 
-// Funkcja do pobierania listy użytkowników
 export async function getUsers() {
   return await fetchApi("users", { method: "GET" });
+}
+
+export async function getCurrentUser() {
+  return await fetchApi("currentUser", { method: "GET" });
 }

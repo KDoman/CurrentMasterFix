@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
 import User from "./models/user.model.js";
 import { generateTokenAndCookie } from "./helpers/generateTokenAndCookie.js";
+import jwt from "jsonwebtoken";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
@@ -17,11 +19,12 @@ app.use(
   })
 );
 app.use(express.json());
+app.use(cookieParser());
 
 const PORT = process.env.PORT || 5000;
 
 app.post("/api/signUp", async (req, res) => {
-  const { login, password } = req.body;
+  const { login, password, name } = req.body;
 
   if (!login || !password) {
     return res.status(400).json({
@@ -41,7 +44,7 @@ app.post("/api/signUp", async (req, res) => {
 
   const hashedPassword = await bcryptjs.hash(password, 10);
 
-  const newUser = new User({ login, password: hashedPassword });
+  const newUser = new User({ login, password: hashedPassword, name });
 
   try {
     await newUser.save();
@@ -59,6 +62,25 @@ app.get("/api/users", async (req, res) => {
   try {
     const users = await User.find({});
     res.status(200).json({ success: true, data: users });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Błąd podczas pobierania danych użytkowników z bazdy danych",
+    });
+  }
+});
+
+app.get("/api/currentUser", async (req, res) => {
+  const token = req.cookies.token;
+
+  if (!token) {
+    return res.status(401).json({ message: "Brak tokena" });
+  }
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    const user = await User.findById(decoded.userId);
+    res.status(200).json({ success: true, data: user });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -119,6 +141,7 @@ app.post("/api/login", async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Pomyślnie zalogowano",
+      data: user,
     });
   } catch (error) {
     res.status(401).json({ success: false, message: error.message });

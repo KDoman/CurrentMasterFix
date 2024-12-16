@@ -4,34 +4,31 @@ import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { GlobalStates } from "../../context/GlobalState";
 import { useNavigate } from "react-router-dom";
-import { loginUser, getUsers } from "../../api_utils/api";
+import { loginUser } from "../../api_utils/api";
+import { useGetStatusFromResponse } from "../../hooks/useGetStatusFromResponse";
+import { Alert } from "../../components/Alert";
 
 export const LoginPage = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
-
+  const { isError, setIsError, isSuccess, setIsSuccess } =
+    useGetStatusFromResponse();
   const navigate = useNavigate();
-  const { setLoggedAccount, setIsLoggedIn, setListData } =
-    useContext(GlobalStates);
+  const { setLoggedAccount, setIsLoggedIn } = useContext(GlobalStates);
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    setError(null); // Resetuj błędy przed nową próbą logowania
-
+    setIsError(null);
     try {
-      // Logowanie użytkownika
-      const loggedAccount = await loginUser(login, password);
-      setLoggedAccount(loggedAccount);
+      const newLoggedUser = await loginUser(login, password);
+      setLoggedAccount(newLoggedUser.data);
       setIsLoggedIn(true);
-
-      // Pobranie danych użytkowników po zalogowaniu
-      const users = await getUsers();
-      setListData(users);
-
-      navigate("/");
+      setIsSuccess(true);
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
     } catch (err) {
-      setError(err.message); // Obsługa błędu
+      setIsError(err.message);
     }
   };
 
@@ -40,7 +37,6 @@ export const LoginPage = () => {
       <div className="left">
         <form onSubmit={onSubmit}>
           <img src={MASTER_FULL_LOGO} alt="Master całe Logo" />
-          {error && <p className="error_message">{error}</p>}
           <div className="input_div">
             <label htmlFor="login">Login</label>
             <input
@@ -65,6 +61,8 @@ export const LoginPage = () => {
             <a className="forgot_password">Nie posiadam konta</a>
           </Link>
           <button type="submit">Zaloguj się</button>
+          {isError && <Alert isError>Błąd podczas logowania</Alert>}
+          {isSuccess && <Alert isSuccess>Pomyślnie zalogowano</Alert>}
         </form>
       </div>
       <div className="right">

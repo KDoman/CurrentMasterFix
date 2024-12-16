@@ -2,8 +2,11 @@ import "./EditAccountView.scss";
 import CROSS_SVG from "../../assets/Cross.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { CategorySelect } from "../../components/CategorySelect";
+import { useContext } from "react";
+import { GlobalStates } from "../../context/GlobalState";
 
 export const EditAccountView = () => {
+  const { loggedAccount } = useContext(GlobalStates);
   const navigate = useNavigate();
 
   const onSaveClick = () => {
@@ -32,7 +35,8 @@ export const EditAccountView = () => {
             <label htmlFor="city">Miasto</label>
             <input type="text" id="city" name="city" />
           </div>
-          <CategorySelect />
+
+          {loggedAccount.isSpecialist && <CategorySelect />}
           <button onClick={onSaveClick}>Zapisz</button>
         </form>
       </div>
