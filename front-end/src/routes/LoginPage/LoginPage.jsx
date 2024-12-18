@@ -58,7 +58,7 @@ export const LoginPage = () => {
             />
           </div>
           <Link to="/signUp">
-            <a className="forgot_password">Nie posiadam konta</a>
+            <span className="forgot_password">Nie posiadam konta</span>
           </Link>
           <button type="submit">Zaloguj się</button>
           {isError && <Alert isError>Błąd podczas logowania</Alert>}

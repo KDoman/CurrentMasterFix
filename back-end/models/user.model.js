@@ -13,9 +13,15 @@ const userSchema = new mongoose.Schema(
     name: {
       type: String,
     },
+    surname: {
+      type: String,
+    },
     isSpecialist: {
       type: Boolean,
       default: false,
+    },
+    city: {
+      type: String,
     },
   },
   {

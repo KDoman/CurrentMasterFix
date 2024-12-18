@@ -14,7 +14,7 @@ const app = express();
 app.use(
   cors({
     origin: "http://localhost:5173",
-    methods: ["*"],
+    methods: ["GET", "POST", "PATCH", "DELETE"],
     credentials: true,
   })
 );
@@ -24,7 +24,7 @@ app.use(cookieParser());
 const PORT = process.env.PORT || 5000;
 
 app.post("/api/signUp", async (req, res) => {
-  const { login, password, name } = req.body;
+  const { login, password, name, city } = req.body;
 
   if (!login || !password) {
     return res.status(400).json({
@@ -44,7 +44,7 @@ app.post("/api/signUp", async (req, res) => {
 
   const hashedPassword = await bcryptjs.hash(password, 10);
 
-  const newUser = new User({ login, password: hashedPassword, name });
+  const newUser = new User({ login, password: hashedPassword, name, city });
 
   try {
     await newUser.save();
@@ -106,12 +106,22 @@ app.delete("/api/users/:id", async (req, res) => {
   }
 });
 
-app.patch("/api/users/:id", async (req, res) => {
-  const { id } = req.params;
-  const user = req.body;
+app.patch("/api/update", async (req, res) => {
+  const token = req.cookies.token;
+  const { name, surname, city } = req.body;
 
   try {
-    const updatedUser = await User.findByIdAndUpdate(id, user, { new: true });
+    const currentUser = jwt.verify(token, process.env.JWT_SECRET);
+
+    const updatedUser = await User.findByIdAndUpdate(
+      currentUser.userId,
+      {
+        name,
+        surname,
+        city,
+      },
+      { new: true }
+    );
     if (!updatedUser) throw new Error();
     res.status(200).json({ success: true, data: updatedUser });
   } catch (error) {

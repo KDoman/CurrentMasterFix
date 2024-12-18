@@ -41,7 +41,7 @@ export const AccountSettings = () => {
                   Miasto: <span>{loggedAccount?.city || "-"}</span>
                 </p>
               </div>
-              {loggedAccount.isSpecialist && (
+              {loggedAccount?.isSpecialist && (
                 <>
                   <div className="box categories">
                     <p>

@@ -27,9 +27,9 @@ export async function loginUser(login, password) {
   });
 }
 
-export async function registerUser(login, password, name = "") {
+export async function registerUser(login, password, name = "", city) {
   return await fetchApi("signUp", {
-    body: JSON.stringify({ login, password, name }),
+    body: JSON.stringify({ login, password, name, city }),
     method: "POST",
   });
 }
@@ -44,4 +44,11 @@ export async function getUsers() {
 
 export async function getCurrentUser() {
   return await fetchApi("currentUser", { method: "GET" });
+}
+
+export async function editUserInfo(name, surname, city) {
+  return await fetchApi("update", {
+    body: JSON.stringify({ name, surname, city }),
+    method: "PATCH",
+  });
 }

@@ -39,24 +39,16 @@ export const Navbar = () => {
     <nav>
       <div className="left">
         <img src={MASTERFIX_LOGO} className="logo" alt="Master Fix logo" />
-        <Link to={"/"}>
-          <a>Strona główna</a>
-        </Link>
-        <Link to={"/aboutUs"}>
-          <a>Firma</a>
-        </Link>
-        <Link to={"/contact"}>
-          <a>Kontakt</a>
-        </Link>
+        <Link to={"/"}>Strona główna</Link>
+        <Link to={"/aboutUs"}>Firma</Link>
+        <Link to={"/contact"}>Kontakt</Link>
       </div>
       <div className="right">
         {!isLoggedIn ? (
           <>
-            <Link to={"/login"}>
-              <a>Zaloguj się</a>
-            </Link>
+            <Link to={"/login"}>Zaloguj się</Link>
             <Link to={"/signUp"}>
-              <a className="sign-up">Zarejestruj się</a>
+              <span className="sign-up">Zarejestruj się</span>
             </Link>
           </>
         ) : (
@@ -67,7 +59,7 @@ export const Navbar = () => {
               </div>
             </Link>
             <Link onClick={logOut} to={"/"}>
-              <a className="sign-up">Wyloguj</a>
+              <span className="sign-up">Wyloguj</span>
             </Link>
           </>
         )}
@@ -82,21 +74,21 @@ export const Navbar = () => {
 
         <div className={isHambOpen ? "menu active" : "menu"}>
           <Link to={"/"} onClick={closeHambMenu}>
-            <a>Strona główna</a>
+            Strona główna
           </Link>
           <Link to={"/aboutUs"} onClick={closeHambMenu}>
-            <a>Firma</a>
+            Firma
           </Link>
           <Link to={"/contact"} onClick={closeHambMenu}>
-            <a>Kontakt</a>
+            Kontakt
           </Link>
           {!isLoggedIn ? (
             <>
               <Link to={"/login"} onClick={closeHambMenu}>
-                <a>Zaloguj się</a>
+                Zaloguj się
               </Link>
               <Link to={"/signUp"} onClick={closeHambMenu}>
-                <a className="sign-up">Zarejestruj się</a>
+                <span className="sign-up">Zarejestruj się</span>
               </Link>
             </>
           ) : (
@@ -107,8 +99,8 @@ export const Navbar = () => {
                   <img src={PERSON_SVG} alt="" />
                 </div>
               </Link>
-              <Link onClick={logOut} role="button" className="sign-up">
-                <a>Wyloguj</a>
+              <Link onClick={logOut} role="button" className="special">
+                Wyloguj
               </Link>
             </>
           )}

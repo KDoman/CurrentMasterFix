@@ -10,6 +10,7 @@ export const SignUp = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [city, setCity] = useState("");
   const { isError, setIsError, isSuccess, setIsSuccess } =
     useGetStatusFromResponse();
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export const SignUp = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await registerUser(login, password, name);
+      await registerUser(login, password, name, city);
       setIsSuccess(true);
       setTimeout(() => {
         navigate("/login");
@@ -58,6 +59,15 @@ export const SignUp = () => {
               id="name"
               required
               onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="input_div">
+            <label htmlFor="name">Miasto</label>
+            <input
+              type="text"
+              id="city"
+              required
+              onChange={(e) => setCity(e.target.value)}
             />
           </div>
           <button type="submit">Zarejestruj się</button>
