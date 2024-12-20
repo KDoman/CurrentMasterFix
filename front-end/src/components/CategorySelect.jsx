@@ -1,10 +1,7 @@
-import { useState } from "react";
 import "./CategorySelect.scss";
 import { proffestionArr } from "../data/proffesions";
 
-export const CategorySelect = () => {
-  const [professionArray, setProfessionArray] = useState([]);
-
+export const CategorySelect = ({ professionArray, setProfessionArray }) => {
   const handleCategoryChange = (e) => {
     const selectedValue = e.target.value;
 

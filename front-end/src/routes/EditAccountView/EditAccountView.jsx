@@ -10,16 +10,25 @@ import { Alert } from "../../components/Alert";
 
 export const EditAccountView = () => {
   const { loggedAccount, setLoggedAccount } = useContext(GlobalStates);
-  const [name, setName] = useState(loggedAccount.name);
-  const [surname, setSurname] = useState(loggedAccount.surname);
-  const [city, setCity] = useState(loggedAccount.city);
+  const [name, setName] = useState(loggedAccount?.name);
+  const [surname, setSurname] = useState(loggedAccount?.surname);
+  const [city, setCity] = useState(loggedAccount?.city);
+  const [professionArray, setProfessionArray] = useState(
+    loggedAccount?.professions
+  );
   const { isError, setIsError, isSuccess, setIsSuccess } =
     useGetStatusFromResponse();
   const navigate = useNavigate();
 
   const onSaveClick = async () => {
     try {
-      const updateUser = await editUserInfo(name, surname, city);
+      const updateUser = await editUserInfo(
+        name,
+        surname,
+        city,
+        professionArray
+      );
+
       setLoggedAccount(updateUser.data);
       setIsSuccess("Zaktualizowano dane");
       setTimeout(() => {
@@ -33,7 +42,7 @@ export const EditAccountView = () => {
   return (
     <div
       className={`edit_account_view ${
-        loggedAccount.isSpecialist && "full_view_height"
+        loggedAccount?.isSpecialist && "full_view_height"
       }`}
     >
       <div className="edit_form">
@@ -74,17 +83,20 @@ export const EditAccountView = () => {
               onChange={(e) => setCity(e.target.value.trim())}
             />
           </div>
-          {loggedAccount?.isSpecialist ? (
-            <>
+          {!loggedAccount?.isSpecialist ? (
+            <div className="box">
               <Alert isError={isError}>{isError}</Alert>
               <Alert isSuccess={isSuccess}>{isSuccess}</Alert>
-            </>
+            </div>
           ) : (
-            <>
-              <CategorySelect />
+            <div className="box">
+              <CategorySelect
+                professionArray={professionArray}
+                setProfessionArray={setProfessionArray}
+              />
               <Alert isError={isError}>{isError}</Alert>
               <Alert isSuccess={isSuccess}>{isSuccess}</Alert>
-            </>
+            </div>
           )}
           <button onClick={onSaveClick}>Zapisz</button>
         </form>

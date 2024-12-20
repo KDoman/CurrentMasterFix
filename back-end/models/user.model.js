@@ -23,9 +23,37 @@ const userSchema = new mongoose.Schema(
     city: {
       type: String,
     },
+    img: {
+      type: String,
+    },
+    latitude: {
+      type: Number,
+    },
+    longitude: {
+      type: Number,
+    },
+    rating: [
+      {
+        mark: { type: Number },
+        message: { type: String },
+      },
+    ],
+    labels: [
+      {
+        type: String,
+      },
+    ],
+    professions: [
+      {
+        type: String,
+      },
+    ],
+    aboutMe: {
+      type: String,
+    },
   },
   {
-    timestamps: true, //createdAt, updatedAt
+    timestamps: true, // createdAt, updatedAt
   }
 );
 

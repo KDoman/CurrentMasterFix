@@ -108,7 +108,7 @@ app.delete("/api/users/:id", async (req, res) => {
 
 app.patch("/api/update", async (req, res) => {
   const token = req.cookies.token;
-  const { name, surname, city } = req.body;
+  const { name, surname, city, professions } = req.body;
 
   try {
     const currentUser = jwt.verify(token, process.env.JWT_SECRET);
@@ -119,6 +119,7 @@ app.patch("/api/update", async (req, res) => {
         name,
         surname,
         city,
+        professions,
       },
       { new: true }
     );
@@ -155,6 +156,47 @@ app.post("/api/login", async (req, res) => {
     });
   } catch (error) {
     res.status(401).json({ success: false, message: error.message });
+  }
+});
+
+app.get("/api/specialists", async (req, res) => {
+  try {
+    const allUsers = await User.find({});
+    const filteredSpecialists = allUsers.filter((user) => user.isSpecialist);
+    res.status(200).json({ success: true, data: filteredSpecialists });
+
+    // return allUsers.filter((user) => user.isSpecialist);
+  } catch (error) {}
+});
+
+app.patch("/api/userToSpecialist", async (req, res) => {
+  const token = req.cookies.token;
+  const { city, professions, aboutMe } = req.body;
+
+  try {
+    const currentIdUser = jwt.verify(token, process.env.JWT_SECRET);
+
+    const currentUser = await User.findById(currentIdUser.userId);
+    if (currentUser.isSpecialist)
+      throw new Error("Użytkownik jest już fachowcem");
+
+    const updateUser = await User.findByIdAndUpdate(
+      currentIdUser.userId,
+      {
+        ...currentUser.toObject(),
+        isSpecialist: true,
+        city,
+        professions,
+        aboutMe,
+      },
+      { new: true }
+    );
+
+    console.log(updateUser);
+
+    res.status(200).json({ success: true, data: updateUser });
+  } catch (error) {
+    res.status(400).json({ success: false, message: error.message });
   }
 });
 
