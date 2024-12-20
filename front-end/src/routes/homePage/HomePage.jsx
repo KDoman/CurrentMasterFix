@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { GlobalStates } from "../../context/GlobalState";
 
 export const HomePage = () => {
-  const { isLoggedIn } = useContext(GlobalStates);
+  const { loggedAccount, isLoggedIn } = useContext(GlobalStates);
 
   const navigate = useNavigate();
 
@@ -54,15 +54,17 @@ export const HomePage = () => {
           <img src={BG_IMG} alt="Ilustracja przedstawiająca osoby pracujące" />
         </div>
       </div>
-      <div className="proffesionalist_div">
-        <div className="left"></div>
-        <div className="right">
-          <h2>
-            Jesteś fachowcem? <span>Wypełnij formularz!</span>
-          </h2>
-          <button onClick={goTo}>Formularz</button>
+      {!loggedAccount?.isSpecialist && (
+        <div className="proffesionalist_div">
+          <div className="left"></div>
+          <div className="right">
+            <h2>
+              Chcesz zostać fachowcem? <span>Wypełnij formularz!</span>
+            </h2>
+            <button onClick={goTo}>Formularz</button>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

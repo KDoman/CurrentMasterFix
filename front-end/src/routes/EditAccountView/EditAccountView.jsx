@@ -7,6 +7,7 @@ import { GlobalStates } from "../../context/GlobalState";
 import { editUserInfo } from "../../api_utils/api";
 import { useGetStatusFromResponse } from "../../hooks/useGetStatusFromResponse";
 import { Alert } from "../../components/Alert";
+import DEFAULT_AVATAR from "../../assets/Person.svg";
 
 export const EditAccountView = () => {
   const { loggedAccount, setLoggedAccount } = useContext(GlobalStates);
@@ -16,6 +17,7 @@ export const EditAccountView = () => {
   const [professionArray, setProfessionArray] = useState(
     loggedAccount?.professions
   );
+  const [aboutMe, setAboutMe] = useState(loggedAccount?.aboutMe);
   const { isError, setIsError, isSuccess, setIsSuccess } =
     useGetStatusFromResponse();
   const navigate = useNavigate();
@@ -26,7 +28,8 @@ export const EditAccountView = () => {
         name,
         surname,
         city,
-        professionArray
+        professionArray,
+        aboutMe
       );
 
       setLoggedAccount(updateUser.data);
@@ -51,7 +54,10 @@ export const EditAccountView = () => {
             <Link to="/account">
               <img src={CROSS_SVG} alt="" />
             </Link>
-            <h1>Edytuj konto</h1>
+            <h1>Edytuj informacje</h1>
+          </div>
+          <div className="box">
+            <img src={DEFAULT_AVATAR} className="avatar" />
           </div>
           <div className="box">
             <label htmlFor="name">Imię</label>
@@ -94,6 +100,12 @@ export const EditAccountView = () => {
                 professionArray={professionArray}
                 setProfessionArray={setProfessionArray}
               />
+              <div className="box textarea_div">
+                <p>O mnie:</p>
+                <textarea onChange={(e) => setAboutMe(e.target.value)}>
+                  {loggedAccount?.aboutMe}
+                </textarea>
+              </div>
               <Alert isError={isError}>{isError}</Alert>
               <Alert isSuccess={isSuccess}>{isSuccess}</Alert>
             </div>

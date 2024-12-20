@@ -108,7 +108,7 @@ app.delete("/api/users/:id", async (req, res) => {
 
 app.patch("/api/update", async (req, res) => {
   const token = req.cookies.token;
-  const { name, surname, city, professions } = req.body;
+  const { name, surname, city, professions, aboutMe } = req.body;
 
   try {
     const currentUser = jwt.verify(token, process.env.JWT_SECRET);
@@ -120,6 +120,7 @@ app.patch("/api/update", async (req, res) => {
         surname,
         city,
         professions,
+        aboutMe,
       },
       { new: true }
     );
@@ -185,6 +186,7 @@ app.patch("/api/userToSpecialist", async (req, res) => {
       {
         ...currentUser.toObject(),
         isSpecialist: true,
+        labels: ["Nowy fachowiec"],
         city,
         professions,
         aboutMe,

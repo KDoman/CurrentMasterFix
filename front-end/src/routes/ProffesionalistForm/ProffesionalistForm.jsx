@@ -2,6 +2,7 @@ import "./ProffesionalistForm.scss";
 import FULL_IMG_LOGO from "../../assets/Master_fix_full_logo.png";
 import { CategorySelect } from "../../components/CategorySelect";
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { GlobalStates } from "../../context/GlobalState";
 import { makeUserSpecialist } from "../../api_utils/api";
 import { useGetStatusFromResponse } from "../../hooks/useGetStatusFromResponse";
@@ -16,6 +17,7 @@ export const ProffesionalistForm = () => {
   const [aboutMe, setAboutMe] = useState(loggedAccount?.aboutMe || "");
   const { isError, setIsError, isSuccess, setIsSuccess } =
     useGetStatusFromResponse();
+  const navigate = useNavigate();
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
@@ -28,6 +30,9 @@ export const ProffesionalistForm = () => {
 
       setLoggedAccount(newSpecialist.data);
       setIsSuccess("Zmiana danych powiodła się");
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
     } catch (error) {
       setIsError(error.message);
     }
@@ -62,8 +67,8 @@ export const ProffesionalistForm = () => {
             onChange={(e) => setAboutMe(e.target.value)}
           ></textarea>
           <button className="submit_button">Dodaj</button>
-          <Alert isSuccess>{isSuccess}</Alert>
-          <Alert isError>{isError}</Alert>
+          {isSuccess && <Alert isSuccess>{isSuccess}</Alert>}
+          {isError && <Alert isError>{isError}</Alert>}
         </form>
       </div>
     </div>

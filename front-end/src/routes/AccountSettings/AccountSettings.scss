@@ -1,20 +1,23 @@
 @import "../../responsive.scss";
 .account_settings_container {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   display: flex;
   position: relative;
   .left {
+    margin: 4rem auto;
     flex: 3;
     display: flex;
     justify-content: center;
-    align-items: center;
     .account_settings_main_content {
       .account_entry_text {
         display: flex;
         max-width: 100%;
         align-items: center;
         gap: 1rem;
+        h1 {
+          max-width: 10ch;
+        }
         img {
           max-width: 1.2rem;
           cursor: pointer;
@@ -34,7 +37,10 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
-
+          .avatar {
+            max-width: 3rem;
+            border-radius: 50%;
+          }
           p {
             font-weight: 500;
             span {
@@ -47,6 +53,20 @@
           }
           input {
             max-width: 7rem;
+          }
+          textarea {
+            resize: none;
+            padding: 0.3rem;
+            min-width: 100%;
+            margin: 0.5rem 0;
+            line-height: 1.5;
+            overflow: scroll;
+            min-height: 10rem;
+          }
+          &.textarea_div {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
           }
         }
       }

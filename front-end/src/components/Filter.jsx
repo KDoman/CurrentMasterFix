@@ -46,8 +46,8 @@ export const Filter = ({ setFilterBy }) => {
           </label>
           <select
             name="proffesion"
-            value={proffesion}
             onChange={(e) => setProffesion(e.target.value)}
+            value={proffesion}
           >
             <option hidden>Wybierz</option>
             {proffestionArr.map((prof) => (
@@ -61,10 +61,11 @@ export const Filter = ({ setFilterBy }) => {
           <label htmlFor="sort" className="city">
             Filtruj po
           </label>
-          <select onChange={(e) => setFilterSelect(e.target.value)}>
-            <option selected value={"mark"}>
-              Najwyższa ocena
-            </option>
+          <select
+            onChange={(e) => setFilterSelect(e.target.value)}
+            defaultValue={"mark"}
+          >
+            <option value={"mark"}>Najwyższa ocena</option>
             <option value={"count"}>Najwięcej ocen</option>
           </select>
         </div>

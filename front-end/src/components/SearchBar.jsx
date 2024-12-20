@@ -29,9 +29,7 @@ export const SearchBar = () => {
           }
         />
         <select
-          onChange={(e) =>
-            setQuery({ ...query, proffesion: e.target.value.toLowerCase() })
-          }
+          onChange={(e) => setQuery({ ...query, proffesion: e.target.value })}
           defaultValue={"select"}
         >
           <option hidden className="first-select" value="select">

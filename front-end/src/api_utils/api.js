@@ -46,9 +46,21 @@ export async function getCurrentUser() {
   return await fetchApi("currentUser", { method: "GET" });
 }
 
-export async function editUserInfo(name, surname, city, professionArray) {
+export async function editUserInfo(
+  name,
+  surname,
+  city,
+  professionArray,
+  aboutMe
+) {
   return await fetchApi("update", {
-    body: JSON.stringify({ name, surname, city, professions: professionArray }),
+    body: JSON.stringify({
+      name,
+      surname,
+      city,
+      professions: professionArray,
+      aboutMe,
+    }),
     method: "PATCH",
   });
 }

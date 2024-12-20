@@ -7,6 +7,7 @@ import { Link, Outlet } from "react-router-dom";
 import { useContext } from "react";
 import { GlobalStates } from "../../context/GlobalState";
 import { Loading } from "../../components/Loading";
+import DEFAULT_AVATAR from "../../assets/Person.svg";
 
 export const AccountSettings = () => {
   const { loggedAccount, isLoading } = useContext(GlobalStates);
@@ -20,12 +21,15 @@ export const AccountSettings = () => {
         ) : (
           <div className="account_settings_main_content">
             <div className="account_entry_text">
-              <h1>Informacje konta</h1>
+              <h1>Twoje informacje</h1>
               <Link to={"/account/edit"}>
                 <img src={PENCIL_SVG} alt="" />
               </Link>
             </div>
             <div className="main_box">
+              <div className="box">
+                <img src={DEFAULT_AVATAR} className="avatar" />
+              </div>
               <div className="box">
                 <p>
                   Imię: <span>{loggedAccount?.name || "Nieznane"}</span>
@@ -50,6 +54,13 @@ export const AccountSettings = () => {
                         <Label key={prof}>{prof}</Label>
                       ))}
                     </p>
+                  </div>
+                  <div className="box textarea_div">
+                    <p>O mnie:</p>
+                    <textarea
+                      value={loggedAccount?.aboutMe}
+                      disabled
+                    ></textarea>
                   </div>
                   <div className="box">
                     <p>

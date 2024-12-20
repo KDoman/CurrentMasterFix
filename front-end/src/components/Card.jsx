@@ -1,5 +1,5 @@
 import "./Card.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PERSON_ICON from "../assets/Person.svg";
 import HOME_ICON from "../assets/Home.svg";
 import STAR_ICON from "../assets/Star.svg";
@@ -9,8 +9,18 @@ import { Label } from "./Label";
 import { GetReviewAvg } from "../helpers/GetReviewAvg";
 
 export const Card = ({ item }) => {
+  const navigate = useNavigate();
+
+  const showAdditionalCardInfo = (item) => {
+    navigate(`/list/${item.id}`);
+  };
+
   return (
-    <Link to={`/list/${item.id}`} className="card_container">
+    <div
+      role="button"
+      onClick={() => showAdditionalCardInfo(item)}
+      className="card_container"
+    >
       <div className="image_container">
         <img src={item.img} />
       </div>
@@ -65,6 +75,6 @@ export const Card = ({ item }) => {
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
