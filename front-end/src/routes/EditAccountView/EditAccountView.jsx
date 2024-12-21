@@ -8,6 +8,7 @@ import { editUserInfo } from "../../api_utils/api";
 import { useGetStatusFromResponse } from "../../hooks/useGetStatusFromResponse";
 import { Alert } from "../../components/Alert";
 import DEFAULT_AVATAR from "../../assets/Person.svg";
+import { ConvertFileToBase64Format } from "../../helpers/ConvertFileToBase64Format";
 
 export const EditAccountView = () => {
   const { loggedAccount, setLoggedAccount } = useContext(GlobalStates);
@@ -18,9 +19,22 @@ export const EditAccountView = () => {
     loggedAccount?.professions
   );
   const [aboutMe, setAboutMe] = useState(loggedAccount?.aboutMe);
+  const [avatar, setAvatar] = useState(loggedAccount?.avatar);
   const { isError, setIsError, isSuccess, setIsSuccess } =
     useGetStatusFromResponse();
   const navigate = useNavigate();
+
+  const onFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      try {
+        const base64 = await ConvertFileToBase64Format(file);
+        setAvatar(base64);
+      } catch (error) {
+        console.error("Błąd konwersji pliku:", error);
+      }
+    }
+  };
 
   const onSaveClick = async () => {
     try {
@@ -29,7 +43,8 @@ export const EditAccountView = () => {
         surname,
         city,
         professionArray,
-        aboutMe
+        aboutMe,
+        avatar
       );
 
       setLoggedAccount(updateUser.data);
@@ -57,7 +72,19 @@ export const EditAccountView = () => {
             <h1>Edytuj informacje</h1>
           </div>
           <div className="box">
-            <img src={DEFAULT_AVATAR} className="avatar" />
+            <label htmlFor="file" className="file_label">
+              Zmień zdjęcie
+            </label>
+            <input
+              type="file"
+              id="file"
+              name="file"
+              className="input_file"
+              onChange={(e) => onFileChange(e)}
+            />
+          </div>
+          <div className="box">
+            <img src={avatar || DEFAULT_AVATAR} className="avatar" />
           </div>
           <div className="box">
             <label htmlFor="name">Imię</label>
@@ -102,7 +129,10 @@ export const EditAccountView = () => {
               />
               <div className="box textarea_div">
                 <p>O mnie:</p>
-                <textarea onChange={(e) => setAboutMe(e.target.value)}>
+                <textarea
+                  onChange={(e) => setAboutMe(e.target.value)}
+                  value={aboutMe}
+                >
                   {loggedAccount?.aboutMe}
                 </textarea>
               </div>

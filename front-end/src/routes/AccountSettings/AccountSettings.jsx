@@ -28,7 +28,10 @@ export const AccountSettings = () => {
             </div>
             <div className="main_box">
               <div className="box">
-                <img src={DEFAULT_AVATAR} className="avatar" />
+                <img
+                  src={loggedAccount?.avatar || DEFAULT_AVATAR}
+                  className="avatar"
+                />
               </div>
               <div className="box">
                 <p>

@@ -8,7 +8,7 @@ import PERSON_SVG from "../assets/Person.svg";
 import { logoutUser } from "../api_utils/api";
 
 export const Navbar = () => {
-  const { isLoggedIn, setIsLoggedIn } = useContext(GlobalStates);
+  const { loggedAccount, isLoggedIn, setIsLoggedIn } = useContext(GlobalStates);
 
   const [isHambOpen, setIsHambOpen] = useState(false);
 
@@ -55,7 +55,7 @@ export const Navbar = () => {
           <>
             <Link to="/account">
               <div className="logged_in_div">
-                <img src={PERSON_SVG} alt="" />
+                <img src={loggedAccount?.avatar || PERSON_SVG} alt="" />
               </div>
             </Link>
             <Link onClick={logOut} to={"/"}>
@@ -95,8 +95,7 @@ export const Navbar = () => {
             <>
               <Link to="/account">
                 <div className="logged_in_div active">
-                  <p>Ustawienia</p>
-                  <img src={PERSON_SVG} alt="" />
+                  <p>Ustawienia konta</p>
                 </div>
               </Link>
               <Link onClick={logOut} role="button" className="special">

@@ -51,6 +51,9 @@ const userSchema = new mongoose.Schema(
     aboutMe: {
       type: String,
     },
+    avatar: {
+      type: String,
+    },
   },
   {
     timestamps: true, // createdAt, updatedAt

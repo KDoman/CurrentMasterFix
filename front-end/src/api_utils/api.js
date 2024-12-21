@@ -51,7 +51,8 @@ export async function editUserInfo(
   surname,
   city,
   professionArray,
-  aboutMe
+  aboutMe,
+  avatar
 ) {
   return await fetchApi("update", {
     body: JSON.stringify({
@@ -60,6 +61,7 @@ export async function editUserInfo(
       city,
       professions: professionArray,
       aboutMe,
+      avatar,
     }),
     method: "PATCH",
   });

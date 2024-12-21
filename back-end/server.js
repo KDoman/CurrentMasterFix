@@ -108,7 +108,7 @@ app.delete("/api/users/:id", async (req, res) => {
 
 app.patch("/api/update", async (req, res) => {
   const token = req.cookies.token;
-  const { name, surname, city, professions, aboutMe } = req.body;
+  const { name, surname, city, professions, aboutMe, avatar } = req.body;
 
   try {
     const currentUser = jwt.verify(token, process.env.JWT_SECRET);
@@ -121,6 +121,7 @@ app.patch("/api/update", async (req, res) => {
         city,
         professions,
         aboutMe,
+        avatar,
       },
       { new: true }
     );
