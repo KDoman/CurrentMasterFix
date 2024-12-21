@@ -9,6 +9,7 @@ import { useGetStatusFromResponse } from "../../hooks/useGetStatusFromResponse";
 import { Alert } from "../../components/Alert";
 import DEFAULT_AVATAR from "../../assets/Person.svg";
 import { ConvertFileToBase64Format } from "../../helpers/ConvertFileToBase64Format";
+import { MapEditPin } from "../../components/MapEditPin";
 
 export const EditAccountView = () => {
   const { loggedAccount, setLoggedAccount } = useContext(GlobalStates);
@@ -18,6 +19,10 @@ export const EditAccountView = () => {
   const [professionArray, setProfessionArray] = useState(
     loggedAccount?.professions
   );
+  const [position, setPosition] = useState({
+    lat: loggedAccount?.latitude || null,
+    lng: loggedAccount?.longitude || null,
+  });
   const [aboutMe, setAboutMe] = useState(loggedAccount?.aboutMe);
   const [avatar, setAvatar] = useState(loggedAccount?.avatar);
   const { isError, setIsError, isSuccess, setIsSuccess } =
@@ -44,7 +49,9 @@ export const EditAccountView = () => {
         city,
         professionArray,
         aboutMe,
-        avatar
+        avatar,
+        position.lat,
+        position.lng
       );
 
       setLoggedAccount(updateUser.data);
@@ -55,6 +62,10 @@ export const EditAccountView = () => {
     } catch {
       setIsError("Operacja nieudana");
     }
+  };
+
+  const resetAvatar = () => {
+    setAvatar(DEFAULT_AVATAR);
   };
 
   return (
@@ -84,7 +95,14 @@ export const EditAccountView = () => {
             />
           </div>
           <div className="box">
-            <img src={avatar || DEFAULT_AVATAR} className="avatar" />
+            <button className="reset_img_button" onClick={resetAvatar}>
+              Zresetuj zdjęcie
+            </button>
+          </div>
+          <div className="box img">
+            <div className="box_img">
+              <img src={avatar || DEFAULT_AVATAR} className="avatar" />
+            </div>
           </div>
           <div className="box">
             <label htmlFor="name">Imię</label>
@@ -92,7 +110,7 @@ export const EditAccountView = () => {
               type="text"
               id="name"
               name="name"
-              defaultValue={loggedAccount.name}
+              defaultValue={loggedAccount?.name}
               onChange={(e) => setName(e.target.value.trim())}
             />
           </div>
@@ -102,7 +120,7 @@ export const EditAccountView = () => {
               type="text"
               id="surname"
               name="surname"
-              defaultValue={loggedAccount.surname}
+              defaultValue={loggedAccount?.surname}
               onChange={(e) => setSurname(e.target.value.trim())}
             />
           </div>
@@ -112,7 +130,7 @@ export const EditAccountView = () => {
               type="text"
               id="city"
               name="city"
-              defaultValue={loggedAccount.city}
+              defaultValue={loggedAccount?.city}
               onChange={(e) => setCity(e.target.value.trim())}
             />
           </div>
@@ -135,6 +153,9 @@ export const EditAccountView = () => {
                 >
                   {loggedAccount?.aboutMe}
                 </textarea>
+              </div>
+              <div className="box">
+                <MapEditPin position={position} setPosition={setPosition} />
               </div>
               <Alert isError={isError}>{isError}</Alert>
               <Alert isSuccess={isSuccess}>{isSuccess}</Alert>

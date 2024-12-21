@@ -18,7 +18,7 @@ app.use(
     credentials: true,
   })
 );
-app.use(express.json());
+app.use(express.json({ limit: "50mb" }));
 app.use(cookieParser());
 
 const PORT = process.env.PORT || 5000;
@@ -108,7 +108,16 @@ app.delete("/api/users/:id", async (req, res) => {
 
 app.patch("/api/update", async (req, res) => {
   const token = req.cookies.token;
-  const { name, surname, city, professions, aboutMe, avatar } = req.body;
+  const {
+    name,
+    surname,
+    city,
+    professions,
+    aboutMe,
+    avatar,
+    latitude,
+    longitude,
+  } = req.body;
 
   try {
     const currentUser = jwt.verify(token, process.env.JWT_SECRET);
@@ -122,6 +131,8 @@ app.patch("/api/update", async (req, res) => {
         professions,
         aboutMe,
         avatar,
+        latitude,
+        longitude,
       },
       { new: true }
     );
@@ -173,7 +184,7 @@ app.get("/api/specialists", async (req, res) => {
 
 app.patch("/api/userToSpecialist", async (req, res) => {
   const token = req.cookies.token;
-  const { city, professions, aboutMe } = req.body;
+  const { city, professions, aboutMe, latitude, longitude } = req.body;
 
   try {
     const currentIdUser = jwt.verify(token, process.env.JWT_SECRET);
@@ -191,6 +202,8 @@ app.patch("/api/userToSpecialist", async (req, res) => {
         city,
         professions,
         aboutMe,
+        latitude,
+        longitude,
       },
       { new: true }
     );

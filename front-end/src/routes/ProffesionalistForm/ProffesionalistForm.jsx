@@ -7,6 +7,7 @@ import { GlobalStates } from "../../context/GlobalState";
 import { makeUserSpecialist } from "../../api_utils/api";
 import { useGetStatusFromResponse } from "../../hooks/useGetStatusFromResponse";
 import { Alert } from "../../components/Alert";
+import { MapEditPin } from "../../components/MapEditPin";
 
 export const ProffesionalistForm = () => {
   const { loggedAccount, setLoggedAccount } = useContext(GlobalStates);
@@ -14,6 +15,7 @@ export const ProffesionalistForm = () => {
   const [professionArray, setProfessionArray] = useState(
     loggedAccount?.professions || []
   );
+  const [position, setPosition] = useState(null);
   const [aboutMe, setAboutMe] = useState(loggedAccount?.aboutMe || "");
   const { isError, setIsError, isSuccess, setIsSuccess } =
     useGetStatusFromResponse();
@@ -25,7 +27,9 @@ export const ProffesionalistForm = () => {
       const newSpecialist = await makeUserSpecialist(
         city,
         professionArray,
-        aboutMe
+        aboutMe,
+        position.lat,
+        position.lng
       );
 
       setLoggedAccount(newSpecialist.data);
@@ -66,6 +70,10 @@ export const ProffesionalistForm = () => {
             placeholder="Jestem hydraulikiem z 5 letnim doświadczeniem..."
             onChange={(e) => setAboutMe(e.target.value)}
           ></textarea>
+          <label htmlFor="map">
+            Zaznacz preferowaną okolicę, w której chcesz znajdować klientów
+          </label>
+          <MapEditPin position={position} setPosition={setPosition} id="map" />
           <button className="submit_button">Dodaj</button>
           {isSuccess && <Alert isSuccess>{isSuccess}</Alert>}
           {isError && <Alert isError>{isError}</Alert>}

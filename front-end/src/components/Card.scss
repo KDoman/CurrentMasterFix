@@ -10,6 +10,13 @@
   gap: 1rem;
   transition: all 0.2s ease;
   position: relative;
+  .image_container {
+    width: 8rem;
+    height: 8rem;
+    img {
+      width: 100%;
+    }
+  }
 
   &:hover {
     box-shadow: 0 0 5px 2px #d6d6d6;

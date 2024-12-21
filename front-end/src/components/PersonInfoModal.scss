@@ -11,16 +11,14 @@
   }
   .person_info_section {
     display: flex;
-    justify-content: space-evenly;
-    gap: 1rem;
+    justify-content: flex-start;
     position: relative;
+    gap: 2rem;
     .back_icon_container {
       z-index: 999;
       width: 2.5rem;
       height: 2.5rem;
-      position: absolute;
-      top: 0;
-      left: 0;
+      margin-right: 1rem;
       background-color: black;
       a {
         display: none;

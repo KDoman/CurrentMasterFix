@@ -52,7 +52,9 @@ export async function editUserInfo(
   city,
   professionArray,
   aboutMe,
-  avatar
+  avatar,
+  lat,
+  lng
 ) {
   return await fetchApi("update", {
     body: JSON.stringify({
@@ -62,14 +64,24 @@ export async function editUserInfo(
       professions: professionArray,
       aboutMe,
       avatar,
+      latitude: lat,
+      longitude: lng,
     }),
     method: "PATCH",
   });
 }
 
-export async function makeUserSpecialist(city, professions, aboutMe) {
+export async function makeUserSpecialist(
+  city,
+  professions,
+  aboutMe,
+  latitude,
+  longitude
+) {
+  if (!latitude || !longitude || !professions.length || !city || !aboutMe)
+    throw new Error("Wypełnij wszystkie pola");
   return await fetchApi("userToSpecialist", {
-    body: JSON.stringify({ city, professions, aboutMe }),
+    body: JSON.stringify({ city, professions, aboutMe, latitude, longitude }),
     method: "PATCH",
   });
 }

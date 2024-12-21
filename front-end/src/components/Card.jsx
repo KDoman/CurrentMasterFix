@@ -12,7 +12,7 @@ export const Card = ({ item }) => {
   const navigate = useNavigate();
 
   const showAdditionalCardInfo = (item) => {
-    navigate(`/list/${item.id}`);
+    navigate(`/list/${item._id}`);
   };
 
   return (
@@ -22,7 +22,7 @@ export const Card = ({ item }) => {
       className="card_container"
     >
       <div className="image_container">
-        <img src={item.img} />
+        <img src={item.avatar || PERSON_ICON} />
       </div>
       <div className="text_container">
         <div>
@@ -51,7 +51,7 @@ export const Card = ({ item }) => {
             />
             <p className="text_rating_p">
               <span className="reviews_counter">({item.rating.length})</span>
-              {GetReviewAvg(item.rating)}
+              {item.rating.length && GetReviewAvg(item.rating)}
             </p>
           </div>
         </div>

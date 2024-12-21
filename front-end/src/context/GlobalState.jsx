@@ -7,7 +7,7 @@ export const GlobalStatesProvider = ({ children }) => {
   const [query, setQuery] = useState({ location: "", proffesion: "" }); // wyszukiwanie
   const [loggedAccount, setLoggedAccount] = useState(null); // zalogowany użytkownik
   const [isLoading, setIsLoading] = useState(true); // Stan ładowania danych użytkownika
-  const [listData, setListData] = useState(null);
+  const [allUsers, setAllUsers] = useState([]);
 
   useLayoutEffect(() => {
     const fetchUserData = async () => {
@@ -49,8 +49,8 @@ export const GlobalStatesProvider = ({ children }) => {
         setLoggedAccount,
         isLoading,
         setIsLoading,
-        listData,
-        setListData,
+        allUsers,
+        setAllUsers,
       }}
     >
       {children}

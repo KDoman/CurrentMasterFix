@@ -23,9 +23,6 @@ const userSchema = new mongoose.Schema(
     city: {
       type: String,
     },
-    img: {
-      type: String,
-    },
     latitude: {
       type: Number,
     },

@@ -15,7 +15,7 @@ export const PersonInfoModal = ({ obj }) => {
         <Link to={`/list`} role="button">
           <BackIcon />
         </Link>
-        <img src={obj.img} />
+        <img src={obj.avatar || PERSON_LOGO} />
         <div className="person_info_modal_name">
           <div className="flex">
             <img src={PERSON_LOGO} alt="" />
@@ -28,7 +28,7 @@ export const PersonInfoModal = ({ obj }) => {
           <div className="additional_info">
             <div className="flex person_info_modal_marks">
               <img src={STAR_LOGO} alt="" />
-              {GetReviewAvg(obj.rating)}
+              {obj.rating.length && GetReviewAvg(obj.rating)}
               <div className="flex person_info_modal_counter_marks">{`${
                 obj.rating.length
               } ${EndOfWord(obj.rating.length)} `}</div>

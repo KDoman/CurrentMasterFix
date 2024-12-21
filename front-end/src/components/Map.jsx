@@ -9,7 +9,7 @@ export const Map = ({ items }) => {
       center={[52.237049, 21.017532]}
       className="map"
       zoom={12}
-      scrollWheelZoom={false}
+      scrollWheelZoom={true}
     >
       <TileLayer
         className="actual_map"
@@ -17,7 +17,7 @@ export const Map = ({ items }) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {items.map((item) => (
-        <Pin item={item} key={item.id} />
+        <Pin item={item} key={item._id} />
       ))}
     </MapContainer>
   );

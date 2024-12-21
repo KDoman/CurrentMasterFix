@@ -3,26 +3,49 @@ import { Card } from "../../components/Card";
 import "./ListPage.scss";
 import { Map } from "../../components/Map";
 import { Outlet } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GlobalStates } from "../../context/GlobalState";
 import { GetFilteredArrayAndSortedArray } from "../../helpers/GetFilteredArrayAndSortedArray";
-import { listData } from "../../data/data";
+import { getUsers } from "../../api_utils/api";
 
 export const ListPage = () => {
-  const { query } = useContext(GlobalStates);
+  const { allUsers, setAllUsers, isLoading, setIsLoading, query } =
+    useContext(GlobalStates);
   const [filterBy, setFilterBy] = useState("mark");
-  const sortedArray = GetFilteredArrayAndSortedArray(listData, query, filterBy);
+  const sortedArray = GetFilteredArrayAndSortedArray(allUsers, query, filterBy);
+
+  useEffect(() => {
+    setIsLoading(true);
+    try {
+      const fetchData = async () => {
+        const users = await getUsers();
+        setAllUsers(users.data);
+      };
+      fetchData();
+    } catch (error) {
+      setAllUsers([]);
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
 
   return (
     <div className="list_page">
       <div className="list_container">
         <div className="list_wrapper">
-          <Outlet />
-          <Filter setFilterBy={setFilterBy} />
-          {sortedArray.length === 0 ? (
-            <p className="not_found">Nie znaleziono fachowców</p>
+          {isLoading ? (
+            <p>Ładowanie...</p>
           ) : (
-            sortedArray.map((item) => <Card key={item.id} item={item} />)
+            <>
+              <Outlet />
+              <Filter setFilterBy={setFilterBy} />
+              {sortedArray.length === 0 ? (
+                <p className="not_found">Nie znaleziono fachowców</p>
+              ) : (
+                sortedArray.map((item) => <Card key={item._id} item={item} />)
+              )}
+            </>
           )}
         </div>
       </div>

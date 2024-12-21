@@ -5,7 +5,7 @@ export const CategorySelect = ({ professionArray, setProfessionArray }) => {
   const handleCategoryChange = (e) => {
     const selectedValue = e.target.value;
 
-    if (selectedValue && !professionArray.includes(selectedValue)) {
+    if (selectedValue && !professionArray?.includes(selectedValue)) {
       setProfessionArray((prev) => [...prev, selectedValue]);
     }
   };
@@ -22,7 +22,7 @@ export const CategorySelect = ({ professionArray, setProfessionArray }) => {
           <option
             key={profession}
             value={profession}
-            className={professionArray.includes(profession) ? "selected" : ""}
+            className={professionArray?.includes(profession) ? "selected" : ""}
           >
             {profession}
           </option>
@@ -30,7 +30,7 @@ export const CategorySelect = ({ professionArray, setProfessionArray }) => {
       </select>
       <div className="selected_categories_container">
         <div className="selected-categories">
-          {professionArray.map((profession) => (
+          {professionArray?.map((profession) => (
             <div key={profession} className="selected-category">
               {profession}
               <button

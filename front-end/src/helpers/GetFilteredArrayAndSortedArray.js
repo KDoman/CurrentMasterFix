@@ -1,7 +1,7 @@
 import { GetReviewAvg } from "./GetReviewAvg";
 
 export const GetFilteredArrayAndSortedArray = (array, query, filterBy) => {
-  const filteredArray = array?.filter((professional) => {
+  const filteredArray = array.filter((professional) => {
     const matchesLocation =
       !query.location || professional.city === query.location;
     const matchesProfession =
