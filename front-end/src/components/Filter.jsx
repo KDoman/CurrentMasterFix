@@ -45,7 +45,7 @@ export const Filter = ({ setFilterBy }) => {
             onChange={(e) => setProffesion(e.target.value)}
             value={proffesion}
           >
-            <option hidden>Wybierz</option>
+            <option value="">Wszystko</option>
             {proffestionArr.map((prof) => (
               <option key={prof} value={prof}>
                 {prof}

@@ -14,7 +14,7 @@ export const SinglePage = () => {
         {allUsers
           .filter((user) => user._id == id)
           .map((currentUser) => (
-            <PersonInfoModal obj={currentUser} key={currentUser.id} />
+            <PersonInfoModal obj={currentUser} key={currentUser._id} />
           ))}
       </div>
     </div>

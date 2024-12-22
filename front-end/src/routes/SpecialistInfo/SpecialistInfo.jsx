@@ -1,5 +1,5 @@
-import { HistoryChat } from "../../components/HistoryChat";
-import "./Messages.scss";
+import { HistoryOrder } from "../../components/HistoryOrder";
+import "./SpecialistInfo.scss";
 import { listData } from "../../data/data";
 import { Label } from "../../components/Label";
 import HOME_LOGO from "../../assets/Home.svg";
@@ -12,45 +12,18 @@ import { ReviewComment } from "../../components/ReviewComment";
 import { UserMessage } from "../../components/UserMessage";
 import { ResponseUserMessage } from "../../components/ResponseUserMessage";
 import { BackIcon } from "../../components/BackIcon";
-export const Messages = () => {
+export const SpecialistInfo = () => {
   return (
     <>
       <div className="messages_page_entry_div">
         <Link to={`/list`}>
           <BackIcon />
         </Link>
-        <h1>Historia wiadomości</h1>
+        <h1>Informacje fachowca</h1>
       </div>
       <div className="messages_page_container">
-        <div className="left_search_filter">
-          <input
-            type="text"
-            name="message_search_input"
-            id="message_search_input"
-            placeholder="Wyszukaj"
-          />
-        </div>
         <div className="left_history_messages">
-          <HistoryChat />
-          <HistoryChat />
-          <HistoryChat />
-          <HistoryChat />
-          <HistoryChat />
-          <HistoryChat />
-          <HistoryChat />
-          <HistoryChat />
-          <HistoryChat />
-          <HistoryChat />
-          <HistoryChat />
-          <HistoryChat />
-          <HistoryChat />
-          <HistoryChat />
-          <HistoryChat />
-          <HistoryChat />
-          <HistoryChat />
-          <HistoryChat />
-          <HistoryChat />
-          <HistoryChat />
+          <HistoryOrder />
         </div>
         <div className="middle_title_name">
           <div className="middle_title_img_and_name">
@@ -104,10 +77,8 @@ export const Messages = () => {
           </div>
           <p>Ostatnie komentarze</p>
           <div className="right_more_prfile_info_review_comment">
-            {listData[0].rating.map((rating) => (
-              <ReviewComment key={listData[0].id}>
-                {rating.message}
-              </ReviewComment>
+            {listData[0].rating.map((rating, i) => (
+              <ReviewComment key={i}>{rating.message}</ReviewComment>
             ))}
           </div>
         </div>

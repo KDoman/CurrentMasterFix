@@ -1,7 +1,7 @@
-import "./HistoryChat.scss";
+import "./HistoryOrder.scss";
 import { listData } from "../data/data";
 
-export const HistoryChat = () => {
+export const HistoryOrder = () => {
   return (
     <div className="history_chat_container">
       <img src={listData[0].img} />

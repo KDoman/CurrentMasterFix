@@ -9,7 +9,7 @@ import { LoginPage } from "./routes/LoginPage/LoginPage";
 import { SignUp } from "./routes/signUpPage/SignUp";
 import { SinglePage } from "./routes/SinglePage/SinglePage";
 
-import { Messages } from "./routes/Messages/Messages";
+import { SpecialistInfo } from "./routes/SpecialistInfo/SpecialistInfo";
 import { MoreProffesionalistInfo } from "./routes/moreProffesionalInfoPage/MoreProffesionalistInfo";
 import { ContactPage } from "./routes/contactPage/ContactPage";
 import { CompanyPage } from "./routes/companyPage/CompanyPage";
@@ -57,11 +57,11 @@ function App() {
         },
         { path: "/proffesionalist_form", element: <ProffesionalistForm /> },
         {
-          path: "/messages",
-          element: <Messages />,
+          path: "/specialistInfo/:id",
+          element: <SpecialistInfo />,
           children: [
             {
-              path: "/messages/more_proffesionalist_info",
+              path: "/specialistInfo/:id/more_proffesionalist_info",
               element: <MoreProffesionalistInfo />,
             },
           ],

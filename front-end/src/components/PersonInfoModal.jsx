@@ -35,7 +35,7 @@ export const PersonInfoModal = ({ obj }) => {
             </div>
           </div>
           <div className="button_container">
-            <Link to={`/messages`} role="button">
+            <Link to={`/specialistInfo/${obj._id}`} role="button">
               <button className="personal_modal_button">Skontaktuj się!</button>
             </Link>
           </div>
