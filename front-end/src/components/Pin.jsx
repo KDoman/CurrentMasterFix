@@ -3,10 +3,27 @@ import "./Pin.scss";
 import { Link } from "react-router-dom";
 import { Label } from "./Label";
 import PERSON_SVG from "../assets/Person.svg";
+import { useEffect, useRef } from "react";
 
-export const Pin = ({ item }) => {
+export const Pin = ({ item, clickedCardPosition }) => {
+  const markerRef = useRef();
+
+  const isActive =
+    clickedCardPosition &&
+    clickedCardPosition[0] === item.latitude &&
+    clickedCardPosition[1] === item.longitude;
+
+  useEffect(() => {
+    if (isActive && markerRef.current) {
+      markerRef.current.openPopup();
+    }
+  }, [isActive]);
+
   return (
-    <Marker position={[item.latitude || 0, item.longitude || 0]}>
+    <Marker
+      position={[item.latitude || 0, item.longitude || 0]}
+      ref={markerRef}
+    >
       <Popup>
         <div className="popup_container">
           <img

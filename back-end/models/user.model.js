@@ -51,6 +51,11 @@ const userSchema = new mongoose.Schema(
     avatar: {
       type: String,
     },
+    savedSpecialists: [
+      {
+        specialistId: { type: String },
+      },
+    ],
   },
   {
     timestamps: true, // createdAt, updatedAt

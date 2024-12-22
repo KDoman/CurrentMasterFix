@@ -11,8 +11,10 @@ import { getUsers } from "../../api_utils/api";
 export const ListPage = () => {
   const { allUsers, setAllUsers, isLoading, setIsLoading, query } =
     useContext(GlobalStates);
+
   const [filterBy, setFilterBy] = useState("mark");
   const sortedArray = GetFilteredArrayAndSortedArray(allUsers, query, filterBy);
+  const [clickedCardPosition, setClickedCardPosition] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -43,14 +45,20 @@ export const ListPage = () => {
               {sortedArray.length === 0 ? (
                 <p className="not_found">Nie znaleziono fachowców</p>
               ) : (
-                sortedArray.map((item) => <Card key={item._id} item={item} />)
+                sortedArray.map((item) => (
+                  <Card
+                    key={item._id}
+                    item={item}
+                    setClickedCardPosition={setClickedCardPosition}
+                  />
+                ))
               )}
             </>
           )}
         </div>
       </div>
       <div className="map_container">
-        <Map items={sortedArray} />
+        <Map items={sortedArray} clickedCardPosition={clickedCardPosition} />
       </div>
     </div>
   );

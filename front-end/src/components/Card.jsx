@@ -1,25 +1,29 @@
 import "./Card.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PERSON_ICON from "../assets/Person.svg";
 import HOME_ICON from "../assets/Home.svg";
+import INFO_ICON from "../assets/Info.svg";
 import STAR_ICON from "../assets/Star.svg";
-import CHAT_ICON from "../assets/chat.svg";
 import SAVE_ICON from "../assets/save.svg";
 import { Label } from "./Label";
 import { GetReviewAvg } from "../helpers/GetReviewAvg";
 
-export const Card = ({ item }) => {
+export const Card = ({ item, setClickedCardPosition }) => {
   const navigate = useNavigate();
 
   const showAdditionalCardInfo = (item) => {
     navigate(`/list/${item._id}`);
   };
 
+  const getPinCardPosition = ({ latitude, longitude }) => {
+    setClickedCardPosition([latitude, longitude]);
+  };
+
   return (
     <div
       role="button"
-      onClick={() => showAdditionalCardInfo(item)}
       className="card_container"
+      onClick={() => getPinCardPosition(item)}
     >
       <div className="image_container">
         <img src={item.avatar || PERSON_ICON} />
@@ -57,12 +61,11 @@ export const Card = ({ item }) => {
         </div>
         <div className="text_down_card_info">
           <div className="text_contact_icons">
-            <Link to={"/messages"}>
-              <img
-                src={CHAT_ICON}
-                alt="Obrazek w formacie SVG przedstawiający wiadomości"
-              />
-            </Link>
+            <img
+              src={INFO_ICON}
+              alt="Obrazek w formacie SVG przedstawiający informacje"
+              onClick={() => showAdditionalCardInfo(item)}
+            />
             <img
               src={SAVE_ICON}
               alt="Obrazek w formacie SVG przedstawiający możliwość zapisania fachowca do ulubionych"

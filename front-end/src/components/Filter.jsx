@@ -30,13 +30,9 @@ export const Filter = ({ setFilterBy }) => {
             name="location"
             id="city"
             list="city_list"
-            value={location.toLowerCase()}
+            value={location}
             onChange={(e) => setLocation(e.target.value)}
           />
-          <datalist id="city_list">
-            <option value="Warszawa" />
-            <option value="Kraków" />
-          </datalist>
         </div>
       </div>
       <div className="bottom">

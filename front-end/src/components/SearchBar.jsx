@@ -24,9 +24,7 @@ export const SearchBar = () => {
           name="location"
           id="location"
           placeholder="Miasto"
-          onChange={(e) =>
-            setQuery({ ...query, location: e.target.value.toLowerCase() })
-          }
+          onChange={(e) => setQuery({ ...query, location: e.target.value })}
         />
         <select
           onChange={(e) => setQuery({ ...query, proffesion: e.target.value })}

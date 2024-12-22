@@ -28,8 +28,8 @@ export const ProffesionalistForm = () => {
         city,
         professionArray,
         aboutMe,
-        position.lat,
-        position.lng
+        position?.lat,
+        position?.lng
       );
 
       setLoggedAccount(newSpecialist.data);
