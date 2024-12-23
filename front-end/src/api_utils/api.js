@@ -76,12 +76,30 @@ export async function makeUserSpecialist(
   professions,
   aboutMe,
   latitude,
-  longitude
+  longitude,
+  phone,
+  email
 ) {
-  if (!latitude || !longitude || !professions.length || !city || !aboutMe)
+  if (
+    !latitude ||
+    !longitude ||
+    !professions.length ||
+    !city ||
+    !aboutMe ||
+    !phone ||
+    !email
+  )
     throw new Error("Wypełnij wszystkie pola");
   return await fetchApi("userToSpecialist", {
-    body: JSON.stringify({ city, professions, aboutMe, latitude, longitude }),
+    body: JSON.stringify({
+      city,
+      professions,
+      aboutMe,
+      latitude,
+      longitude,
+      phone,
+      email,
+    }),
     method: "PATCH",
   });
 }

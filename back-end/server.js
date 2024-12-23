@@ -177,8 +177,6 @@ app.get("/api/specialists", async (req, res) => {
     const allUsers = await User.find({});
     const filteredSpecialists = allUsers.filter((user) => user.isSpecialist);
     res.status(200).json({ success: true, data: filteredSpecialists });
-
-    // return allUsers.filter((user) => user.isSpecialist);
   } catch (error) {}
 });
 
@@ -197,7 +195,8 @@ app.get("/api/findById/:findSpecialistById", async (req, res) => {
 
 app.patch("/api/userToSpecialist", async (req, res) => {
   const token = req.cookies.token;
-  const { city, professions, aboutMe, latitude, longitude } = req.body;
+  const { city, professions, aboutMe, latitude, longitude, phone, email } =
+    req.body;
 
   try {
     const currentIdUser = jwt.verify(token, process.env.JWT_SECRET);
@@ -217,11 +216,11 @@ app.patch("/api/userToSpecialist", async (req, res) => {
         aboutMe,
         latitude,
         longitude,
+        phone,
+        email,
       },
       { new: true }
     );
-
-    console.log(updateUser);
 
     res.status(200).json({ success: true, data: updateUser });
   } catch (error) {

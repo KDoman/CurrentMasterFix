@@ -17,6 +17,9 @@ export const ProffesionalistForm = () => {
   );
   const [position, setPosition] = useState(null);
   const [aboutMe, setAboutMe] = useState(loggedAccount?.aboutMe || "");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+
   const { isError, setIsError, isSuccess, setIsSuccess } =
     useGetStatusFromResponse();
   const navigate = useNavigate();
@@ -29,7 +32,9 @@ export const ProffesionalistForm = () => {
         professionArray,
         aboutMe,
         position?.lat,
-        position?.lng
+        position?.lng,
+        phone,
+        email
       );
 
       setLoggedAccount(newSpecialist.data);
@@ -44,8 +49,6 @@ export const ProffesionalistForm = () => {
 
   return (
     <div className="proffesionalist_form_container">
-      <div className="left"></div>
-      <div className="right"></div>
       <div className="form_container">
         <img src={FULL_IMG_LOGO} alt="Całe logo Master Fix" />
         <h1>Wypełnij krótki formularz i dodaj siebie do listy fachowców!</h1>
@@ -70,6 +73,23 @@ export const ProffesionalistForm = () => {
             placeholder="Jestem hydraulikiem z 5 letnim doświadczeniem..."
             onChange={(e) => setAboutMe(e.target.value)}
           ></textarea>
+          <label htmlFor="phone">Numer telefonu</label>
+          <input
+            type="tel"
+            name="phone"
+            id="phone"
+            maxLength={9}
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
           <label htmlFor="map">
             Zaznacz preferowaną okolicę, w której chcesz znajdować klientów
           </label>

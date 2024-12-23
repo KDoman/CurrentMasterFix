@@ -22,9 +22,9 @@ export const LoginPage = () => {
     try {
       const newLoggedUser = await loginUser(login, password);
       setLoggedAccount(newLoggedUser.data);
-      setIsLoggedIn(true);
       setIsSuccess(true);
       setTimeout(() => {
+        setIsLoggedIn(true);
         navigate("/");
       }, 1000);
     } catch (err) {
