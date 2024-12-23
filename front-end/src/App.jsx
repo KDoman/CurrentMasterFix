@@ -10,7 +10,6 @@ import { SignUp } from "./routes/signUpPage/SignUp";
 import { SinglePage } from "./routes/SinglePage/SinglePage";
 
 import { SpecialistInfo } from "./routes/SpecialistInfo/SpecialistInfo";
-import { MoreProffesionalistInfo } from "./routes/moreProffesionalInfoPage/MoreProffesionalistInfo";
 import { ContactPage } from "./routes/contactPage/ContactPage";
 import { CompanyPage } from "./routes/companyPage/CompanyPage";
 import { ProffesionalistForm } from "./routes/ProffesionalistForm/ProffesionalistForm";
@@ -57,14 +56,8 @@ function App() {
         },
         { path: "/proffesionalist_form", element: <ProffesionalistForm /> },
         {
-          path: "/specialistInfo/:id",
+          path: "/specialistInfo/:specialistId",
           element: <SpecialistInfo />,
-          children: [
-            {
-              path: "/specialistInfo/:id/more_proffesionalist_info",
-              element: <MoreProffesionalistInfo />,
-            },
-          ],
         },
       ],
     },

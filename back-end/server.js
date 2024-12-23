@@ -182,6 +182,19 @@ app.get("/api/specialists", async (req, res) => {
   } catch (error) {}
 });
 
+app.get("/api/findById/:findSpecialistById", async (req, res) => {
+  const { findSpecialistById } = req.params;
+  try {
+    const specialist = await User.findById(findSpecialistById);
+    if (!specialist) {
+      throw new Error("Użytkownik nie został znaleziony");
+    }
+    res.status(200).json({ success: true, specialist });
+  } catch (error) {
+    res.status(404).json({ success: false, message: error.message });
+  }
+});
+
 app.patch("/api/userToSpecialist", async (req, res) => {
   const token = req.cookies.token;
   const { city, professions, aboutMe, latitude, longitude } = req.body;

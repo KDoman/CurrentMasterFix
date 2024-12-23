@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from "react";
 import { GlobalStates } from "../../context/GlobalState";
 import { GetFilteredArrayAndSortedArray } from "../../helpers/GetFilteredArrayAndSortedArray";
 import { getUsers } from "../../api_utils/api";
+import { LoadingSpinner } from "../../components/LoadingSpinner";
 
 export const ListPage = () => {
   const { allUsers, setAllUsers, isLoading, setIsLoading, query } =
@@ -34,32 +35,37 @@ export const ListPage = () => {
 
   return (
     <div className="list_page">
-      <div className="list_container">
-        <div className="list_wrapper">
-          {isLoading ? (
-            <p>Ładowanie...</p>
-          ) : (
-            <>
-              <Outlet />
-              <Filter setFilterBy={setFilterBy} />
-              {sortedArray.length === 0 ? (
-                <p className="not_found">Nie znaleziono fachowców</p>
-              ) : (
-                sortedArray.map((item) => (
-                  <Card
-                    key={item._id}
-                    item={item}
-                    setClickedCardPosition={setClickedCardPosition}
-                  />
-                ))
-              )}
-            </>
-          )}
-        </div>
-      </div>
-      <div className="map_container">
-        <Map items={sortedArray} clickedCardPosition={clickedCardPosition} />
-      </div>
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <>
+          <div className="list_container">
+            <div className="list_wrapper">
+              <>
+                <Outlet />
+                <Filter setFilterBy={setFilterBy} />
+                {sortedArray.length === 0 ? (
+                  <p className="not_found">Nie znaleziono fachowców</p>
+                ) : (
+                  sortedArray.map((item) => (
+                    <Card
+                      key={item._id}
+                      item={item}
+                      setClickedCardPosition={setClickedCardPosition}
+                    />
+                  ))
+                )}
+              </>
+            </div>
+          </div>
+          <div className="map_container">
+            <Map
+              items={sortedArray}
+              clickedCardPosition={clickedCardPosition}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 };

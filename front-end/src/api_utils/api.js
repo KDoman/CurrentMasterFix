@@ -85,3 +85,7 @@ export async function makeUserSpecialist(
     method: "PATCH",
   });
 }
+
+export async function findSpecialistById(findSpecialistById) {
+  return await fetchApi(`findById/${findSpecialistById}`, { method: "GET" });
+}
