@@ -54,7 +54,9 @@ export async function editUserInfo(
   aboutMe,
   avatar,
   lat,
-  lng
+  lng,
+  phone,
+  email
 ) {
   return await fetchApi("update", {
     body: JSON.stringify({
@@ -66,6 +68,8 @@ export async function editUserInfo(
       avatar,
       latitude: lat,
       longitude: lng,
+      phone,
+      email,
     }),
     method: "PATCH",
   });

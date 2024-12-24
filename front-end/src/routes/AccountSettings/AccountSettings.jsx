@@ -48,6 +48,16 @@ export const AccountSettings = () => {
                   Miasto: <span>{loggedAccount?.city || "-"}</span>
                 </p>
               </div>
+              <div className="box">
+                <p>
+                  Telefon: <span>{loggedAccount?.phone || "-"}</span>
+                </p>
+              </div>
+              <div className="box">
+                <p>
+                  Email: <span>{loggedAccount?.email || "-"}</span>
+                </p>
+              </div>
               {loggedAccount?.isSpecialist && (
                 <>
                   <div className="box categories">

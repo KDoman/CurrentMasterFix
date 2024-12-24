@@ -83,6 +83,8 @@
 
   .text_labels {
     display: flex;
+    flex-wrap: wrap;
+    margin-right: 2rem;
     gap: 1rem;
   }
 }

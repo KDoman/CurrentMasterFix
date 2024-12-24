@@ -117,6 +117,8 @@ app.patch("/api/update", async (req, res) => {
     avatar,
     latitude,
     longitude,
+    phone,
+    email,
   } = req.body;
 
   try {
@@ -133,6 +135,8 @@ app.patch("/api/update", async (req, res) => {
         avatar,
         latitude,
         longitude,
+        phone,
+        email,
       },
       { new: true }
     );

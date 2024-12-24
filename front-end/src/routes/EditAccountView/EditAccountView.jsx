@@ -16,6 +16,8 @@ export const EditAccountView = () => {
   const [name, setName] = useState(loggedAccount?.name);
   const [surname, setSurname] = useState(loggedAccount?.surname);
   const [city, setCity] = useState(loggedAccount?.city);
+  const [phone, setPhone] = useState(loggedAccount?.phone);
+  const [email, setEmail] = useState(loggedAccount?.email);
   const [professionArray, setProfessionArray] = useState(
     loggedAccount?.professions
   );
@@ -51,7 +53,9 @@ export const EditAccountView = () => {
         aboutMe,
         avatar,
         position.lat,
-        position.lng
+        position.lng,
+        phone,
+        email
       );
 
       setLoggedAccount(updateUser.data);
@@ -133,6 +137,27 @@ export const EditAccountView = () => {
               defaultValue={loggedAccount?.city}
               onChange={(e) => setCity(e.target.value.trim())}
             />
+          </div>
+          <div className="box">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              defaultValue={loggedAccount?.email}
+              onChange={(e) => setEmail(e.target.value.trim())}
+            />
+            <div className="box">
+              <label htmlFor="phone">Telefon</label>
+              <input
+                type="tel"
+                maxLength={9}
+                id="phone"
+                name="phone"
+                defaultValue={loggedAccount?.phone}
+                onChange={(e) => setPhone(e.target.value.trim())}
+              />
+            </div>
           </div>
           {!loggedAccount?.isSpecialist ? (
             <div className="box">
