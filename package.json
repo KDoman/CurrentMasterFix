@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "back-end": "nodemon back-end/server.js",
-    "front-end": "cd front-end && npm run dev",
+    "front-end": "cd front-end && npm run dev -- --host",
     "dev": "concurrently \"npm run back-end\" \"npm run front-end\""
   },
   "type": "module",

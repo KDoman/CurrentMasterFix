@@ -107,6 +107,7 @@ export const EditAccountView = () => {
             <div className="box_img">
               <img src={avatar || DEFAULT_AVATAR} className="avatar" />
             </div>
+            <p className="avatar_info">Zalecany współczynnik proporcji 1:1</p>
           </div>
           <div className="box">
             <label htmlFor="name">Imię</label>

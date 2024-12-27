@@ -2,11 +2,26 @@
 
 .messages_page_entry_div {
   margin: 2rem 0;
+  h1 {
+    margin-top: 1rem;
+  }
 }
 
-.box {
+.special_box {
+  border-bottom: 2px solid #bbbbbb;
+  padding-bottom: 0.6rem;
+  @include sm {
+    padding: 1rem 0 0.5rem 0;
+  }
   .p_info {
     margin-left: 2rem;
+    .mark_counter {
+      color: #bbbbbb;
+    }
+    &.about_me {
+      padding-right: 2rem;
+      line-height: 1.4rem;
+    }
   }
   .mini_box {
     color: #bbbbbb;
@@ -19,29 +34,64 @@
       fill: #bbbbbb;
     }
   }
+  &.professions {
+    padding-top: 2rem;
+    .prof_info_div {
+      margin-left: 1.7rem;
+      .prof_info {
+        display: inline-block;
+        margin: 0.3rem;
+        width: max-content;
+      }
+    }
+  }
 }
 
-.grid_container {
+.container {
   box-shadow: 0 0 0.3rem #d3d3d3;
   border-radius: 0.5rem;
+  padding: 1rem;
   .main_div_info {
     display: flex;
     gap: 2rem;
     .avatar {
-      max-width: 12rem;
+      max-width: 15rem;
+      height: 15rem;
+      border-radius: 0.5rem;
+      @include sm {
+        margin: auto;
+        display: block;
+      }
+    }
+    @include sm {
+      display: initial;
     }
   }
   .info_box {
     flex: 2;
-    display: flex;
-    justify-content: space-around;
+    display: grid;
     margin: 2rem;
-    border-bottom: 2px solid #bbbbbb;
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
     @include md {
-      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       justify-content: start;
       gap: 2rem;
       padding-bottom: 2rem;
+    }
+    @include sm {
+      display: initial;
+      grid-template-columns: initial;
+      font-size: 0.9rem;
+    }
+  }
+
+  .about_me_info {
+    padding: 2rem;
+    @include sm {
+      padding: 0;
     }
   }
 }

@@ -9,6 +9,11 @@ import PERSON_SVG from "../../assets/Person.svg";
 import GREY_PERSON_SVG from "../../assets/GreyPerson.svg";
 import GREY_PHONE_SVG from "../../assets/GreyPhone.svg";
 import GREY_EMAIL_SVG from "../../assets/GreyEmail.svg";
+import GREY_STAR_SVG from "../../assets/GreyStar.svg";
+import GREY_HOME_SVG from "../../assets/GreyHome.svg";
+import GREY_SKILLS_SVG from "../../assets/Skills.svg";
+import { GetReviewAvg } from "../../helpers/GetReviewAvg";
+import { Label } from "../../components/Label";
 
 export const SpecialistInfo = () => {
   const { specialistId } = useParams();
@@ -42,7 +47,7 @@ export const SpecialistInfo = () => {
       {isLoading ? (
         <LoadingSpinner />
       ) : !isError ? (
-        <div className="grid_container">
+        <div className="container">
           <div className="main_div_info">
             <img
               className="avatar"
@@ -50,7 +55,7 @@ export const SpecialistInfo = () => {
               alt=""
             />
             <div className="info_box">
-              <div className="box">
+              <div className="special_box">
                 <div className="mini_box">
                   <img src={GREY_PERSON_SVG} alt="" />
                   <p>Imię i nazwisko</p>
@@ -59,19 +64,60 @@ export const SpecialistInfo = () => {
                   {specialist.name} {specialist.surname}
                 </p>
               </div>
-              <div className="box">
+              <div className="special_box">
                 <div className="mini_box">
                   <img src={GREY_PHONE_SVG} alt="" />
                   <p>Numer telefonu</p>
                 </div>
                 <p className="p_info">{specialist.phone}</p>
               </div>
-              <div className="box">
+              <div className="special_box">
                 <div className="mini_box">
                   <img src={GREY_EMAIL_SVG} alt="" />
                   <p>Email</p>
                 </div>
                 <p className="p_info">{specialist.email}</p>
+              </div>
+              <div className="special_box">
+                <div className="mini_box">
+                  <img src={GREY_HOME_SVG} alt="" />
+                  <p>Lokalizacja</p>
+                </div>
+                <p className="p_info">{specialist.city}</p>
+              </div>
+              <div className="special_box">
+                <div className="mini_box">
+                  <img src={GREY_STAR_SVG} alt="" />
+                  <p>Średnia ocen</p>
+                </div>
+                <p className="p_info">
+                  <span className="mark_counter">
+                    ({specialist.rating?.length})
+                  </span>{" "}
+                  {specialist.rating?.length && GetReviewAvg(specialist.rating)}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="about_me_info">
+            <div className="special_box">
+              <div className="mini_box">
+                <img src={GREY_PERSON_SVG} alt="" />
+                <p>O mnie</p>
+              </div>
+              <p className="p_info about_me">{specialist.aboutMe}</p>
+            </div>
+            <div className="special_box professions">
+              <div className="mini_box">
+                <img src={GREY_SKILLS_SVG} alt="" />
+                <p>Specjalizacje</p>
+              </div>
+              <div className="prof_info_div">
+                {specialist.professions?.map((prof) => (
+                  <div className="prof_info" key={prof}>
+                    <Label>{prof}</Label>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
