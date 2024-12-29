@@ -8,12 +8,14 @@ import PERSON_SVG from "../assets/Person.svg";
 import { logoutUser } from "../api_utils/api";
 
 export const Navbar = () => {
-  const { loggedAccount, isLoggedIn, setIsLoggedIn } = useContext(GlobalStates);
+  const { setLoggedAccount, loggedAccount, isLoggedIn, setIsLoggedIn } =
+    useContext(GlobalStates);
 
   const [isHambOpen, setIsHambOpen] = useState(false);
 
   const logOut = () => {
     setIsLoggedIn(null);
+    setLoggedAccount(null);
     logoutUser();
   };
 

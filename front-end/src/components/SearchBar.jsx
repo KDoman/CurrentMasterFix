@@ -6,11 +6,9 @@ import { useNavigate } from "react-router-dom";
 
 export const SearchBar = () => {
   const navigate = useNavigate();
-  const { isLoggedIn, query, setQuery } = useContext(GlobalStates);
+  const { query, setQuery } = useContext(GlobalStates);
   const onClickButton = () => {
-    if (!isLoggedIn) {
-      navigate("/login");
-    } else navigate("/list");
+    navigate("/list");
   };
 
   return (

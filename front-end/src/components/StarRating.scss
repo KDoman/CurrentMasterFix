@@ -1,0 +1,12 @@
+.star-rating {
+  font-size: 1.8rem;
+}
+
+.star {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+input[type="radio"] {
+  display: none;
+}

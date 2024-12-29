@@ -111,3 +111,10 @@ export async function makeUserSpecialist(
 export async function findSpecialistById(findSpecialistById) {
   return await fetchApi(`findById/${findSpecialistById}`, { method: "GET" });
 }
+
+export async function sendReview(specialistId, userId, name, mark, message) {
+  return await fetchApi("sendReview", {
+    method: "PATCH",
+    body: JSON.stringify({ specialistId, userId, name, mark, message }),
+  });
+}

@@ -6,7 +6,7 @@ import PENCIL_SVG from "../../assets/Pencil.svg";
 import { Link, Outlet } from "react-router-dom";
 import { useContext } from "react";
 import { GlobalStates } from "../../context/GlobalState";
-import { Loading } from "../../components/Loading";
+import { LoadingSpinner } from "../../components/LoadingSpinner";
 import DEFAULT_AVATAR from "../../assets/Person.svg";
 
 export const AccountSettings = () => {
@@ -17,7 +17,7 @@ export const AccountSettings = () => {
       <Outlet />
       <div className="left">
         {isLoading ? (
-          <Loading />
+          <LoadingSpinner />
         ) : (
           <div className="account_settings_main_content">
             <div className="account_entry_text">

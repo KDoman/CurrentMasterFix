@@ -15,6 +15,7 @@ import { CompanyPage } from "./routes/companyPage/CompanyPage";
 import { ProffesionalistForm } from "./routes/ProffesionalistForm/ProffesionalistForm";
 import { AccountSettings } from "./routes/AccountSettings/AccountSettings";
 import { EditAccountView } from "./routes/EditAccountView/EditAccountView";
+import { WriteReview } from "./routes/WriteReview/WriteReview";
 
 function App() {
   const router = createBrowserRouter([
@@ -58,6 +59,10 @@ function App() {
         {
           path: "/specialistInfo/:specialistId",
           element: <SpecialistInfo />,
+        },
+        {
+          path: "/reviews/:specialistId",
+          element: <WriteReview />,
         },
       ],
     },

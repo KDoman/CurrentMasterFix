@@ -232,6 +232,31 @@ app.patch("/api/userToSpecialist", async (req, res) => {
   }
 });
 
+app.patch("/api/sendReview", async (req, res) => {
+  const { specialistId, userId, name, mark, message } = req.body;
+  try {
+    const findSpecialistById = await User.findById(specialistId);
+
+    if (findSpecialistById.rating.some((obj) => obj.userId === userId))
+      throw new Error("Wystawiłeś już ocenę dla tego użytkownika");
+
+    const specialist = await User.findByIdAndUpdate(
+      specialistId,
+      {
+        $push: { rating: { userId, name, mark, message } },
+      },
+      { new: true }
+    );
+
+    res.status(200).json({ success: true, data: specialist });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message || "Wystawianie oceny nie powiodło się",
+    });
+  }
+});
+
 app.listen(PORT, () => {
   connectDB();
 });

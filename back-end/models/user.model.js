@@ -37,6 +37,8 @@ const userSchema = new mongoose.Schema(
     },
     rating: [
       {
+        userId: { type: String },
+        name: { type: String },
         mark: { type: Number },
         message: { type: String },
       },
@@ -57,11 +59,6 @@ const userSchema = new mongoose.Schema(
     avatar: {
       type: String,
     },
-    savedSpecialists: [
-      {
-        specialistId: { type: String },
-      },
-    ],
   },
   {
     timestamps: true, // createdAt, updatedAt

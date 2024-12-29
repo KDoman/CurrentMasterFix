@@ -9,7 +9,10 @@
     flex: 3;
     display: flex;
     justify-content: center;
+    max-width: 100%;
+
     .account_settings_main_content {
+      width: 30rem;
       .account_entry_text {
         display: flex;
         max-width: 100%;

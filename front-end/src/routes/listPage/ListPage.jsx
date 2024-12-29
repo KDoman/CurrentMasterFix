@@ -10,12 +10,22 @@ import { getUsers } from "../../api_utils/api";
 import { LoadingSpinner } from "../../components/LoadingSpinner";
 
 export const ListPage = () => {
-  const { allUsers, setAllUsers, isLoading, setIsLoading, query } =
-    useContext(GlobalStates);
+  const {
+    allUsers,
+    setAllUsers,
+    isLoading,
+    setIsLoading,
+    query,
+    loggedAccount,
+  } = useContext(GlobalStates);
 
   const [filterBy, setFilterBy] = useState("mark");
   const sortedArray = GetFilteredArrayAndSortedArray(allUsers, query, filterBy);
   const [clickedCardPosition, setClickedCardPosition] = useState(null);
+
+  const filterArray = loggedAccount
+    ? sortedArray.filter((specialist) => specialist._id !== loggedAccount._id)
+    : sortedArray;
 
   useEffect(() => {
     setIsLoading(true);
@@ -47,10 +57,10 @@ export const ListPage = () => {
                 {sortedArray.length === 0 ? (
                   <p className="not_found">Nie znaleziono fachowców</p>
                 ) : (
-                  sortedArray.map((item) => (
+                  filterArray.map((specialist) => (
                     <Card
-                      key={item._id}
-                      item={item}
+                      key={specialist._id}
+                      specialist={specialist}
                       setClickedCardPosition={setClickedCardPosition}
                     />
                   ))
@@ -60,7 +70,7 @@ export const ListPage = () => {
           </div>
           <div className="map_container">
             <Map
-              items={sortedArray}
+              items={filterArray}
               clickedCardPosition={clickedCardPosition}
             />
           </div>
