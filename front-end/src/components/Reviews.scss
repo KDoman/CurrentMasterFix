@@ -3,6 +3,9 @@
   margin-top: 1rem;
   border: 1px solid #d3d3d3;
   overflow-y: scroll;
+  .review_span_name {
+    text-transform: capitalize;
+  }
 }
 .review {
   width: 100%;

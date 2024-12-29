@@ -23,6 +23,8 @@
     justify-content: flex-start;
     position: relative;
     gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #d3d3d3;
     .back_icon_container {
       z-index: 999;
       width: 2.5rem;
@@ -84,7 +86,7 @@
 
   .button_container {
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
     display: flex;
     justify-content: flex-end;
 
