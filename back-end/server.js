@@ -199,6 +199,9 @@ app.get("/api/findById/:findSpecialistById", async (req, res) => {
 
 app.patch("/api/userToSpecialist", async (req, res) => {
   const token = req.cookies.token;
+
+  console.log("Token received in /api/userToSpecialist:", token);
+
   const { city, professions, aboutMe, latitude, longitude, phone, email } =
     req.body;
 
