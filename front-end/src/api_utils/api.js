@@ -1,5 +1,5 @@
-// let BASE_URL = "https://masterfix-backend-pbgj.onrender.com" || "http://localhost:5000/api";
-const  BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "https://masterfix-backend-pbgj.onrender.com/api"
+
 
 async function fetchApi(endpoint, options = {}) {
   try {
@@ -16,8 +16,8 @@ async function fetchApi(endpoint, options = {}) {
 
     return await response.json();
   } catch (error) {
-    console.error(`Error fetching ${endpoint}:`, error);
-    throw error;
+    console.error(`Offline Server ${endpoint}:`, error);
+    throw new Error(error.message);
   }
 }
 
