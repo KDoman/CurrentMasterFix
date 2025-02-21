@@ -1,4 +1,5 @@
-const BASE_URL = "http://localhost:5000/api";
+// let BASE_URL = "https://masterfix-backend-pbgj.onrender.com" || "http://localhost:5000/api";
+const  BASE_URL = "http://localhost:5000/api";
 
 async function fetchApi(endpoint, options = {}) {
   try {
@@ -10,7 +11,7 @@ async function fetchApi(endpoint, options = {}) {
 
     if (!response.ok) {
       const error = await response.json();
-      throw new Error(error.message || "Błąd podczas fetchowania");
+      throw new Error(error.message || "Nieoczekiwany błąd, skontaktuj się z deweloperem");
     }
 
     return await response.json();

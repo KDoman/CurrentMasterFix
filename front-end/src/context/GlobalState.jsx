@@ -1,4 +1,5 @@
 import { createContext, useState, useLayoutEffect } from "react";
+import { getCurrentUser } from "../api_utils/api";
 
 export const GlobalStates = createContext();
 
@@ -12,27 +13,15 @@ export const GlobalStatesProvider = ({ children }) => {
   useLayoutEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/currentUser", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-        });
-
-        if (!response.ok) {
-          throw new Error("Błąd podczas pobierania danych użytkownika");
-        }
-
-        const data = await response.json();
-
-        setLoggedAccount(data.data);
+        const response = await getCurrentUser();
+        setLoggedAccount(response.data);
       } catch (error) {
         console.error("Błąd pobierania danych użytkownika", error);
       } finally {
         setIsLoading(false);
       }
-    };
+    }
+  
 
     fetchUserData();
     setIsLoggedIn(document.cookie);
