@@ -5,7 +5,9 @@ export const generateTokenAndCookie = (res, userId) => {
     expiresIn: "7d",
   });
 
-  res.cookie("token", token);
+  res.cookie("token", token,{
+    httpOnly: true,
+  });
 
   return token;
 };
