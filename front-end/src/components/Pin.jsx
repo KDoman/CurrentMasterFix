@@ -5,6 +5,7 @@ import { Label } from "./Label";
 import PERSON_SVG from "../assets/Person.svg";
 import { useEffect, useRef } from "react";
 import MARKER_SVG from '../assets/Marker.svg'
+import { Icon } from "leaflet";
 
 export const Pin = ({ item, clickedCardPosition }) => {
   const markerRef = useRef();
@@ -20,11 +21,19 @@ export const Pin = ({ item, clickedCardPosition }) => {
     }
   }, [isActive]);
 
+  const customIcon = new Icon({
+    iconUrl: MARKER_SVG,
+    iconSize: [40, 40],
+    iconAnchor: [20, 40], 
+    popupAnchor: [0, -40],
+  });
+
   return (
     <Marker
       position={[item.latitude || 0, item.longitude || 0]}
       ref={markerRef}
-      icon={MARKER_SVG}
+      icon={customIcon}
+ 
     >
       <Popup>
         <div className="popup_container">
