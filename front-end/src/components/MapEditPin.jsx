@@ -1,6 +1,8 @@
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import "./MapEditPin.scss";
 import "leaflet/dist/leaflet.css";
+import { Icon } from "leaflet";
+import MARKER_SVG from '../assets/Marker.svg';
 
 export const MapEditPin = ({ position, setPosition }) => {
   const ClickHandler = () => {
@@ -10,6 +12,13 @@ export const MapEditPin = ({ position, setPosition }) => {
       },
     });
   };
+
+   const customIcon = new Icon({
+      iconUrl: MARKER_SVG,
+      iconSize: [40, 40],
+      iconAnchor: [20, 40], 
+      popupAnchor: [0, -40],
+    });
 
   return (
     <div className="edit_map_container">
@@ -24,7 +33,7 @@ export const MapEditPin = ({ position, setPosition }) => {
           className="actual_edit_map"
         />
         <ClickHandler />
-        {position && <Marker position={position}></Marker>}
+        {position && <Marker position={position} icon={customIcon}></Marker>}
       </MapContainer>
     </div>
   );
