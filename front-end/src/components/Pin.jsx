@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Label } from "./Label";
 import PERSON_SVG from "../assets/Person.svg";
 import { useEffect, useRef } from "react";
+import MARKER_SVG from '../assets/Marker.svg'
 
 export const Pin = ({ item, clickedCardPosition }) => {
   const markerRef = useRef();
@@ -23,6 +24,7 @@ export const Pin = ({ item, clickedCardPosition }) => {
     <Marker
       position={[item.latitude || 0, item.longitude || 0]}
       ref={markerRef}
+      icon={MARKER_SVG}
     >
       <Popup>
         <div className="popup_container">
