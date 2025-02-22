@@ -15,7 +15,7 @@ export const GlobalStatesProvider = ({ children }) => {
       try {
         const response = await getCurrentUser();
         setLoggedAccount(response.data);
-        console.log(loggedAccount)
+        setIsLoggedIn(loggedAccount);
       } catch (error) {
         console.error("Błąd pobierania danych użytkownika", error);
       } finally {
@@ -25,7 +25,6 @@ export const GlobalStatesProvider = ({ children }) => {
   
 
     fetchUserData();
-    setIsLoggedIn(loggedAccount);
   }, []);
 
   return (
