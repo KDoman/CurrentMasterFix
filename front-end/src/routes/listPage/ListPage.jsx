@@ -27,9 +27,9 @@ export const ListPage = () => {
     ? sortedArray.filter((specialist) => specialist._id !== loggedAccount._id)
     : sortedArray;
 
-  useEffect(() => {
-    setIsLoading(true);
-    try {
+    useEffect(() => {
+      setIsLoading(true);
+      try {
       const fetchData = async () => {
         const users = await getUsers();
         setAllUsers(users.data);
@@ -45,32 +45,25 @@ export const ListPage = () => {
 
   return (
     <div className="list_page">
-      {isLoading ? (
+      {isLoading || allUsers.length === 0 ? (
         <LoadingSpinner />
       ) : (
         <>
           <div className="list_container">
             <div className="list_wrapper">
-              <>
-                <Outlet />
-                <Filter setFilterBy={setFilterBy} />
-                { (
-                  filterArray.map((specialist) => (
-                    <Card
-                      key={specialist._id}
-                      specialist={specialist}
-                      setClickedCardPosition={setClickedCardPosition}
-                    />
-                  ))
-                )}
-              </>
+              <Outlet />
+              <Filter setFilterBy={setFilterBy} />
+              {filterArray.map((specialist) => (
+                <Card
+                  key={specialist._id}
+                  specialist={specialist}
+                  setClickedCardPosition={setClickedCardPosition}
+                />
+              ))}
             </div>
           </div>
           <div className="map_container">
-            <Map
-              items={filterArray}
-              clickedCardPosition={clickedCardPosition}
-            />
+            <Map items={filterArray} clickedCardPosition={clickedCardPosition} />
           </div>
         </>
       )}
