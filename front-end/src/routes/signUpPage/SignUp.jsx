@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import { registerUser } from "../../api_utils/api";
 import { Alert } from "../../components/Alert";
 import { useGetStatusFromResponse } from "../../hooks/useGetStatusFromResponse";
+import { LoadingSpinner } from "../../components/LoadingSpinner";
 
 export const SignUp = () => {
   const [login, setLogin] = useState("");
@@ -14,10 +15,12 @@ export const SignUp = () => {
   const { isError, setIsError, isSuccess, setIsSuccess } =
     useGetStatusFromResponse();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true)
       await registerUser(login, password, name, city);
       setIsSuccess(true);
       setTimeout(() => {
@@ -25,6 +28,8 @@ export const SignUp = () => {
       }, 1500);
     } catch {
       setIsError(true);
+    }finally{
+      setIsLoading(false);
     }
   };
 
@@ -71,6 +76,7 @@ export const SignUp = () => {
             />
           </div>
           <button type="submit">Zarejestruj się</button>
+          {isLoading && <LoadingSpinner/>}
           {isError && <Alert isError>Błąd podczas rejestracji</Alert>}
           {isSuccess && <Alert isSuccess>Pomyślnie zarejestrowano</Alert>}
         </form>

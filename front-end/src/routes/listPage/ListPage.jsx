@@ -54,7 +54,7 @@ export const ListPage = () => {
               <>
                 <Outlet />
                 <Filter setFilterBy={setFilterBy} />
-                {sortedArray.length === 0 ? (
+                {filterArray.length === 0 ? (
                   <p className="not_found">Nie znaleziono fachowców</p>
                 ) : (
                   filterArray.map((specialist) => (

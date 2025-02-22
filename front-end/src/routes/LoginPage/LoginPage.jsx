@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../api_utils/api";
 import { useGetStatusFromResponse } from "../../hooks/useGetStatusFromResponse";
 import { Alert } from "../../components/Alert";
+import {LoadingSpinner} from '../../components/LoadingSpinner'
 
 export const LoginPage = () => {
   const [login, setLogin] = useState("");
@@ -15,11 +16,13 @@ export const LoginPage = () => {
     useGetStatusFromResponse();
   const navigate = useNavigate();
   const { setLoggedAccount, setIsLoggedIn } = useContext(GlobalStates);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async (e) => {
     e.preventDefault();
     setIsError(null);
     try {
+      setIsLoading(true)
       const newLoggedUser = await loginUser(login, password);
       setLoggedAccount(newLoggedUser.data);
       setIsSuccess(true);
@@ -29,6 +32,8 @@ export const LoginPage = () => {
       }, 1000);
     } catch (err) {
       setIsError(err.message);
+    }finally{
+      setIsLoading(false);
     }
   };
 
@@ -61,6 +66,7 @@ export const LoginPage = () => {
             <span className="forgot_password">Nie posiadam konta</span>
           </Link>
           <button type="submit">Zaloguj się</button>
+          {isLoading && <LoadingSpinner/>}
           {isError && <Alert isError>{isError}</Alert>}
           {isSuccess && <Alert isSuccess>Pomyślnie zalogowano</Alert>}
         </form>
