@@ -151,7 +151,7 @@ app.patch("/api/update", async (req, res) => {
 });
 
 app.post("/api/logout", (req, res) => {
-  res.clearCookie("token", token, {
+  res.clearCookie("token", {
     httpOnly: true,
     secure: true,
     sameSite: "None",
