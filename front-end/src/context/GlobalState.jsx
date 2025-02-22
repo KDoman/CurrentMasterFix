@@ -17,7 +17,8 @@ export const GlobalStatesProvider = ({ children }) => {
         setLoggedAccount(response.data);
         setIsLoggedIn(true);
       } catch (error) {
-        console.error("Błąd pobierania danych użytkownika", error);
+        setLoggedAccount(null);
+        setIsLoggedIn(false);
       } finally {
         setIsLoading(false);
       }

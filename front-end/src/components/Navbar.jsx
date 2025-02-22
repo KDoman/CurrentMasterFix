@@ -14,9 +14,9 @@ export const Navbar = () => {
   const [isHambOpen, setIsHambOpen] = useState(false);
 
   const logOut = () => {
+    logoutUser();
     setIsLoggedIn(null);
     setLoggedAccount(null);
-    logoutUser();
   };
 
   const closeHambMenu = () => {
