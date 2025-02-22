@@ -54,9 +54,7 @@ export const ListPage = () => {
               <>
                 <Outlet />
                 <Filter setFilterBy={setFilterBy} />
-                {filterArray.length === 0 ? (
-                  <p className="not_found">Nie znaleziono fachowców</p>
-                ) : (
+                { (
                   filterArray.map((specialist) => (
                     <Card
                       key={specialist._id}
